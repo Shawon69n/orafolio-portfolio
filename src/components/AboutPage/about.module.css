@@ -1,0 +1,58 @@
+.mainContainer{
+    width: 1503px;
+    
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+.Ptxt{
+    
+    margin-left: 371px;
+    font-size: 37px;
+    font-weight: 600;
+    color: black;
+}
+
+.Ptxt2{
+    margin-left: 371px;
+    font-size: 25px;
+    font-weight: 700;
+    color: black;
+}
+
+.expSection{
+    width: 1187px;
+    height: 544px;
+    margin: 0 auto;
+   margin-top: 100px;
+   margin-bottom: 100px;
+   display: flex;
+   justify-content: space-between;
+}
+
+
+.ExpLeft{
+    width: 474px;
+}
+
+.ExpRight{
+    width: 593px;
+}
+
+.dateTxt{
+    font-size: larger;
+    letter-spacing: 5px;
+    color: #c7c7c7;
+}
+
+.rightTxt1{
+    display: flex;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #c7c7c7;
+}
+.rightTxt{
+    display: flex;
+    padding-bottom: 40px;
+    padding-top: 64px;
+    border-bottom: 1px solid #c7c7c7;
+}

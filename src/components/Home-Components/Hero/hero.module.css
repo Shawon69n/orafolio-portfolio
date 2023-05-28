@@ -1,0 +1,54 @@
+.HeroContainer{
+    width: 1503px;
+    height: 874px;
+    background: #131315;
+}
+  
+  .articleCard {
+    width: 715px;
+    height: 388px;
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 64px ;
+  }
+  
+ 
+  
+ 
+  
+  
+  
+  .articleCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .articleCard .content {
+    box-sizing: border-box;
+    width: 100%;
+    position: absolute;
+    padding: 30px 20px 20px 20px;
+    height: auto;
+    bottom: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  }
+  
+  .articleCard .date,
+  .articleCard .title {
+    margin: 0;
+  }
+  
+  
+  
+  .articleCard .title {
+    font-size: 17px;
+    color: #fff;
+  }
+
+  .content{
+    display: flex;
+    justify-content: space-between;
+  }

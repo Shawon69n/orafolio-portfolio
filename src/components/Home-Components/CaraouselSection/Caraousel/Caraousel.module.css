@@ -1,0 +1,15 @@
+.imgSize{
+    width: 1455px;
+    height: 662px;
+}
+.NavButton{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+   
+    right: 0;
+   margin-right: 50px;
+  
+    
+}

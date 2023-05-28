@@ -1,0 +1,37 @@
+.HeroContainer{
+    width: 1503px;
+    height: 1420px;
+    background: #131315;
+}
+
+.imgSlideTxt img{
+    opacity: 0;
+  
+}
+
+.imgSlideTxt:hover h1{
+    transform: translateX(20px);
+    transition: all 0.3s ease-in-out;
+  
+}
+.imgSlideTxt:hover img{
+    opacity: 1;
+    transform: translateX(-10px);
+   
+    
+}
+
+
+  .Txt{
+    color: white;
+    font-size: larger;
+    margin-left: 410px;
+    padding-top: 20px;
+    letter-spacing: 0.2cm;
+  }
+ 
+  
+  .hidden {
+    transform: translateX(-0px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }

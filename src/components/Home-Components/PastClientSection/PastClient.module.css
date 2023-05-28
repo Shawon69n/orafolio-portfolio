@@ -1,0 +1,48 @@
+.hoverImg{
+    width: 450px;
+    height: 322px;
+    border-radius: 10px;
+    position: absolute;
+    left: 256px;
+    z-index: 1;
+}
+
+.MainContainer{
+    width: 1187px;
+    margin: 0 auto;
+   
+    border-bottom: 1px solid silver;
+}
+
+.SubContainer img{
+    visibility: hidden;
+    position: absolute;
+    transition: all 0.5s ease;
+    transform: scale(0);
+}
+
+.SubContainer {
+   
+}
+
+.SubContainer:hover img{
+    visibility: visible;
+    transform: scale(1);
+    
+}
+
+.TxtDiv{
+   margin-left: 559px;
+}
+
+
+@media (min-width: 1700px) and (max-width: 4000px) {
+    .hoverImg{
+        width: 450px;
+        height: 322px;
+        border-radius: 10px;
+        position: absolute;
+        left: 480px;
+        z-index: 1;
+    }
+  }
