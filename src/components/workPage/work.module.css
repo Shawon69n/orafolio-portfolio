@@ -1,35 +1,11 @@
-.imgSize{
-    width: 1455px;
-    height: 662px;
-}
-.NavButton{
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-   
-    
-}
-.ExpTxt{
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    color: #c7c7c7;
-    
-}
-
 .articleCard {
-    width: 1455px;
-    height: 662px;
+    width: 1503px;
+    height: 740px;
     border-radius: 32px;
     overflow: hidden;
     position: relative;
     font-family: Arial, Helvetica, sans-serif;
-    margin-left: 24px;
-    
+  
   }
 
   
@@ -37,7 +13,10 @@
   
 
   
-  
+  .MainContainer{
+    width: 1503px;
+    margin: 0 auto;
+  }
   
   
   .articleCard img {
@@ -45,7 +24,11 @@
     height: 100%;
     object-fit: cover;
   }
-  
+  .articleCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
   
   
   .articleCard .content {
@@ -105,9 +88,8 @@
     height: 65px;
     border-radius: 50%;
     margin-top: 50px;
-    margin-right: 78px;
+    margin-right: 42px;
     cursor: pointer;
-    z-index: 2;
   }
   
   .arrow{
@@ -115,7 +97,6 @@
     margin: 15px 15px 15px 15px;
     color: #ec7324;
     transition:.3s ease;
-    z-index: 2;
     
   }
 
@@ -133,3 +114,70 @@
     letter-spacing: 5px;
     font-weight: 600;
   }
+
+
+
+/* article card 2  */
+
+  .articleCard2 {
+      width: 746px;
+      height: 740px;
+      border-radius: 32px;
+      overflow: hidden;
+      position: relative;
+      font-family: Arial, Helvetica, sans-serif;
+      margin-top: 24px ;
+    }
+
+    .articleCard2 .content {
+      box-sizing: border-box;
+      width: 100%;
+      position: absolute;
+      padding: 30px 20px 20px 20px;
+      height: auto;
+      bottom: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+    }
+
+    .articleCard2 .titleTxt2 {
+      margin-top: 6px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 2px;
+    }
+
+    .articleCard2 .titleTxt1 {
+      margin-top: 2px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 2px;
+    }
+
+    .articleCard2 .title {
+      font-size: 19px;
+      color: #c7c7c7;
+      margin-bottom: 7px;
+      letter-spacing: 4px;
+    }
+
+    .articleCard2 img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .arrowBtn2{
+      background: white;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      margin-top: 200px;
+      margin-right: 12px;
+      cursor: pointer;
+    }
+
+    .arrowBtn2:hover .arrow{
+      rotate: -50grad;
+    }

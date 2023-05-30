@@ -11,7 +11,7 @@
     width: 1187px;
     margin: 0 auto;
    
-    border-bottom: 1px solid silver;
+    border-bottom: 1px solid rgba(192, 192, 192, 0.637);
 }
 
 .SubContainer img{

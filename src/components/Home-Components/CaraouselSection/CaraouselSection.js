@@ -24,8 +24,8 @@ const CaraouselSection = () => {
                 </div>
               
            </div>
-           <h1 className='ml-16 mt-16 mb-8 text-xl tracking-widest text-white '>SELECTED PROJECT</h1>
-            <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className=''>
+           
+            <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='mt-10'>
             <Caraousel/>
             </div>
         </div>

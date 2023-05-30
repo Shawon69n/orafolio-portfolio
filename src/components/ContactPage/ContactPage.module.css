@@ -1,0 +1,30 @@
+.mainContainer{
+    width: 1503px;
+    height: 584px;
+    margin: 0 auto;
+    background: #131315;
+    border-radius: 40px;
+    color: white;
+}
+.carouselDiv{
+    width: 1503px;
+    margin: 0 auto;
+}
+
+.rightTxt{
+    margin-left: 413px;
+}
+
+.leftTxt{
+    font-size: 18px;
+    letter-spacing: 7px;
+    color: #c7c7c7;
+}
+
+.submitBtn{
+    background: #ec7224;
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+}

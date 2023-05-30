@@ -1,0 +1,41 @@
+.NavButton{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+   margin-right: 8px;
+    
+}
+.ExpTxt{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    color: #c7c7c7;
+    
+}
+
+.mainContainer{
+    width: 1471px;
+    height: 261px;
+    margin: 100px 0px 100px 0px;
+
+}
+
+.CaraouselContainer{
+    margin-top: 100px;
+}
+
+.CarouselTxt{
+    font-size: 37px;
+    font-weight: 600;
+    margin-left: 50px;
+}
+
+.avatarRound{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}

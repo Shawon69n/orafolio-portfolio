@@ -12,6 +12,7 @@ import Footer from '@/components/SharedComp/Footer/Footer'
 import Aos from 'aos'
 import 'aos/dist/aos.css';
 import { useEffect } from 'react'
+import PastClientCaraousel from '@/components/SharedComp/pastClientCaraousel/PastClientCaraousel'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -37,7 +38,7 @@ export default function Home() {
         <AboutMe/>
         <CaraouselSection/>
         <PastClientSection/>
-       
+       <PastClientCaraousel/>
         </div>
         <Footer/>
       </main>
