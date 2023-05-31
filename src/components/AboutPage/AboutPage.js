@@ -5,8 +5,6 @@ import Footer from '../SharedComp/Footer/Footer';
 const AboutPage = () => {
 
     return (
-        
-        <div>
             <div className={`${styles.mainContainer}`}>
                 <div  data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='flex justify-between mb-24 '>
                 <div >
@@ -59,11 +57,8 @@ const AboutPage = () => {
                 </div>
             </div>
         </div>
-
-
             </div>
-        <Footer/>
-        </div>
+     
        
     );
 };

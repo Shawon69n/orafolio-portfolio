@@ -1,0 +1,54 @@
+.MainContainer{
+    width: 1424px;
+    margin: 0 auto;
+}
+
+.imgDiv1{
+    height: 600px;
+    margin-bottom: 24px;
+}
+.imgDiv2{
+    height: 300px;
+    display: flex;
+    
+}
+
+.imgSize{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 22px;
+}
+
+.LeftTxt{
+    font-size: larger;
+    letter-spacing: 5px;
+    color: #c7c7c7;
+}
+
+.txtDiv{
+    width: 854px;
+    height: 162px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.arrow{
+    color: #ec7324;
+    margin-right: 10px;
+}
+
+ .title {
+    font-size: 19px;
+    color: #c7c7c7;
+    margin-bottom: 7px;
+    letter-spacing: 4px;
+  }
+  
+   .titleTxt1 {
+    margin-top: 2px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    
+  }

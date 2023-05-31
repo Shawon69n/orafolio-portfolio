@@ -2,12 +2,12 @@ import React from 'react'
 import styles from './work.module.css'
 import { AiOutlineArrowRight} from 'react-icons/ai';
 import PastClientCaraousel from '../SharedComp/pastClientCaraousel/PastClientCaraousel';
+import Link from 'next/link';
 const WorkPage = () => {
   return (
     <div className={styles.MainContainer}>
         <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='mt-24 mb-5 font-bold text-7xl text-black'>Selected Project</h1>
          <div className='mt-16'>
-        {/* <h1 className={styles.date}>01/05</h1> */}
         <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={styles.center}>
             <div className={styles.articleCard}>
             <div className={styles.content}>
@@ -25,7 +25,7 @@ const WorkPage = () => {
                         <p className={styles.titleTxt2}>Mobile Apps</p>
                     </div>
                </div>
-                <div className={styles.arrowBtn}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></div>
+                <Link href='/works/project1' className={styles.arrowBtn}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></Link>
                 </div>
                 <img  src="https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad4976d6a3b33270d6ee_Nothing-Phone-Mockup-001.jpeg" />
             </div>
