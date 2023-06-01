@@ -30,7 +30,7 @@ const Caraousel = () => {
              }}
 
             
-            modules={[ Pagination, Navigation , A11y, ]}
+            modules={[ Pagination, Navigation , A11y, Autoplay]}
             className="mySwiper"
         >
            

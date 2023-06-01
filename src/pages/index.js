@@ -38,8 +38,8 @@ export default function Home() {
         <Hero/>
         <AboutMe/>
         <CaraouselSection/>
-        {/* <PastClientSection/>
-       <PastClientCaraousel/>  */}
+         <PastClientSection/>
+       {/* <PastClientCaraousel/>   */}
         </div>
         
       </main>
