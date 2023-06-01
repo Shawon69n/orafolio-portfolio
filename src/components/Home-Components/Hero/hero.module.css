@@ -1,5 +1,4 @@
 .HeroContainer{
-    width: 1503px;
     height: 874px;
     background: #131315;
 }
@@ -51,4 +50,31 @@
   .content{
     display: flex;
     justify-content: space-between;
+  }
+
+
+
+  
+
+  @media screen and (max-width: 640px) {
+    .HeroContainer{
+      height: 1084px;
+      background: #131315;
+      
+  }
+  .articleCard {
+    width: 560px;
+    height: 303px;
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 60px ;
+  }
+  .heroImgRes{
+  padding-left: 32px;
+  padding-right: 28px;
+
+  }
+
   }

@@ -7,18 +7,18 @@ const Hero = () => {
     return (
         <div   className={` rounded-3xl ${styles.HeroContainer}` }>
              <div className=" flex justify-center ">
-                    <div className=" text-center mt-20">
+                    <div className=" text-center ">
                         <div>
-                        <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2500" className="text-7xl text-white font-bold">Visual Designer <br /> Based in Indonesia</h1>
+                        <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2500" className=" lg:text-7xl text-5xl pt-10  text-white font-bold">Visual Designer <br /> Based in Indonesia</h1>
                         <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="3000" className="py-6 text-zinc-600 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor <br /> incididunt ut labore et dolore magna aliqua minim veniam, quis nostrud.</p>
-                        <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="3000">
+                        <div  data-aos="fade-up" data-aos-delay="100" data-aos-duration="3000">
                         <Buttons />
                         </div>
                         </div>
               </div>
             </div>
 
-        <div className='flex justify-evenly '>
+        <div className={`${styles.heroImgRes} lg:flex lg:justify-evenly `}>
 
         <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={styles.center}>
             <div className={styles.articleCard}>

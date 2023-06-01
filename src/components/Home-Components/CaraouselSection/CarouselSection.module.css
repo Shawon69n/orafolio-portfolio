@@ -35,3 +35,26 @@
     transform: translateX(-0px);
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
+
+
+  @media screen and (max-width: 640px) {
+ .HeroContainer{
+  width: 640px;
+    height: 1105px;
+    background: #131315;
+ }
+ .imgSlideTxt:hover img{
+  opacity: 0;
+}
+.imgSlideTxt img{
+  display: none;
+
+}
+.Txt{
+  color: white;
+  font-size: 12px;
+  margin-left: 230px;
+  padding-top: 20px;
+  letter-spacing: 0.2cm;
+}
+  }

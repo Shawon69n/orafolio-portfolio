@@ -12,6 +12,13 @@ import { Pagination, Navigation, Autoplay ,A11y } from "swiper";
 import { NavButton } from "./NavButton/Navbutton";
 
 const Caraousel = () => {
+    const data = [
+        { id: 1, img: "https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad48284d878348280d3f_Nothing-Phone-Mockup-010.jpeg" },
+        { id: 2, img: "https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad470e90ea53220438bf_Nothing-Phone-Mockup-016.jpeg" },
+        { id: 3, img: "https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad483efb726f0a4b5fb9_Nothing-Phone-Mockup-007.jpeg" },
+        { id: 4, img: "https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad48284d878348280d3f_Nothing-Phone-Mockup-010.jpeg" },
+        { id: 5, img: "https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad48b8989934ebd889aa_Nothing-Phone-Mockup-004.jpeg" },
+      ];
     return (
         <div className={styles.CaraouselContainer}>
               <Swiper
@@ -23,11 +30,11 @@ const Caraousel = () => {
              }}
 
             
-            modules={[ Pagination, Navigation , A11y, ]}
+            modules={[ Pagination, Navigation , A11y, Autoplay]}
             className="mySwiper"
         >
            
-            <SwiperSlide> 
+           {data.map((D)=><SwiperSlide key={D.id}> 
             <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='mt-24'>
                 <div className={styles.articleCard}>
                 <div className={styles.content}>
@@ -47,16 +54,10 @@ const Caraousel = () => {
                 </div>
                     <div className={styles.arrowBtn}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></div>
                     </div>
-                    <img  src="https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad48284d878348280d3f_Nothing-Phone-Mockup-010.jpeg" />
+                    <img  src={D.img} />
                 </div>
         </div>
-        </SwiperSlide>
-
-
-            <SwiperSlide><img className={`${styles.imgSize} rounded-3xl m-auto`} src="https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad470e90ea53220438bf_Nothing-Phone-Mockup-016.jpeg" alt="" /></SwiperSlide>
-            <SwiperSlide><img className={`${styles.imgSize} rounded-3xl m-auto`} src="https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad483efb726f0a4b5fb9_Nothing-Phone-Mockup-007.jpeg" alt="" /></SwiperSlide>
-            <SwiperSlide><img className={`${styles.imgSize} rounded-3xl m-auto`} src="https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad48284d878348280d3f_Nothing-Phone-Mockup-010.jpeg" alt="" /></SwiperSlide>
-            <SwiperSlide><img className={`${styles.imgSize} rounded-3xl m-auto`} src="https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad48b8989934ebd889aa_Nothing-Phone-Mockup-004.jpeg" alt="" /></SwiperSlide>
+        </SwiperSlide>)}
                 
                 <div className="">
                 <h1 className={`${styles.ExpTxt} text-xl tracking-widest  ml-10 mt-5`}>SELECTED PROJECT</h1>
