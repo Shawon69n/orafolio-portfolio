@@ -30,7 +30,7 @@ const Caraousel = () => {
              }}
 
             
-            modules={[ Pagination, Navigation , A11y, Autoplay]}
+            modules={[ Pagination, Navigation , A11y, ]}
             className="mySwiper"
         >
            
@@ -38,14 +38,14 @@ const Caraousel = () => {
             <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='mt-24'>
                 <div className={styles.articleCard}>
                 <div className={styles.content}>
-                <div className='flex ml-10'>
-                    <div className='mb-5'>
+                <div className='lg:flex '>
+                    <div className='mb-5 mt-5'>
                             <h1 className={styles.title}>PROJECT</h1>
                             <p className={styles.titleTxt1}>Desinging a social</p>
                             <p className={styles.titleTxt1}>Media app for the</p>
                             <p className={styles.titleTxt1}>Black Experience</p>
                         </div>
-                        <div className='ml-10'>
+                        <div className='lg:ml-10'>
                             <h1 className={styles.title}>TYPE</h1>
                             <p className={styles.titleTxt2}>Branding Project</p>
                             <p className={styles.titleTxt2}>Web Desing</p>
