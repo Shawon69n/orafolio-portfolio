@@ -24,18 +24,21 @@ const PastClientCaraousel = () => {
              }}
 
             
-            modules={[ Pagination, Navigation , A11y, Autoplay]}
+            modules={[ Pagination, Navigation , A11y,Autoplay]}
             className="mySwiper"
         >
            
             <SwiperSlide>
                 <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={styles.mainContainer}>
+                  <div className=''>
                     <p className={styles.CarouselTxt}>
-                    "Donnie transformed our brand identity and website into a modern,
-                     sleek and professional representation of our company.Their design skills are second to none"
-                    </p>
+                        "Donnie transformed our brand identity and website into a modern, <br />
+                        sleek and professional representation of our company. 
+                        Their designskills <br /> are  second to none" 
+                        </p>
+                  </div>
                 
-                   <div className='flex ml-12 mt-16'>
+                   <div className='flex lg:ml-36 ml-10 mt-16'>
                     <div className='avatar'>
                             <div className={styles.avatarRound}>
                                 <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt="" />
@@ -50,12 +53,15 @@ const PastClientCaraousel = () => {
             </SwiperSlide>
             <SwiperSlide>
                 <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={styles.mainContainer}>
+                  <div className=''>
                     <p className={styles.CarouselTxt}>
-                    "Donnie transformed our brand identity and website into a modern,
-                     sleek and professional representation of our company.Their design skills are second to none"
-                    </p>
+                        "Donnie transformed our brand identity and website into a modern, <br />
+                        sleek and professional representation of our company. 
+                        Their designskills <br /> are  second to none" 
+                        </p>
+                  </div>
                 
-                   <div className='flex ml-12 mt-16'>
+                   <div className='flex lg:ml-36 ml-10 mt-16'>
                     <div className='avatar'>
                             <div className={styles.avatarRound}>
                                 <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt="" />
@@ -70,12 +76,15 @@ const PastClientCaraousel = () => {
             </SwiperSlide>
             <SwiperSlide>
                 <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={styles.mainContainer}>
+                  <div className=''>
                     <p className={styles.CarouselTxt}>
-                    "Donnie transformed our brand identity and website into a modern,
-                     sleek and professional representation of our company.Their design skills are second to none"
-                    </p>
+                        "Donnie transformed our brand identity and website into a modern, <br />
+                        sleek and professional representation of our company. 
+                        Their designskills <br /> are  second to none" 
+                        </p>
+                  </div>
                 
-                   <div className='flex ml-12 mt-16'>
+                   <div className='flex lg:ml-36 ml-10 mt-16'>
                     <div className='avatar'>
                             <div className={styles.avatarRound}>
                                 <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt="" />
@@ -88,6 +97,8 @@ const PastClientCaraousel = () => {
                    </div>
                 </div>
             </SwiperSlide>
+          
+          
            
         
             

@@ -16,13 +16,20 @@
     padding: 64px 0px 64px 0px;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 640px) {
     .footer{
         background: #131315;
         padding: 100px 100px 0px 100px;
         margin-top: 50px;
-        width: 1500px ;
+        width: 640px ;
         border-top-left-radius: 50px;
         border-top-right-radius: 50px;
     }
+    
+.footer2ndSec{
+    display: block;
+    border-top: 1px solid #575656;
+    border-bottom: 1px solid #575656;
+  
+}
   }
