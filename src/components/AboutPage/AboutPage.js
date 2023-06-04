@@ -6,10 +6,10 @@ const AboutPage = () => {
 
     return (
             <div className={`${styles.mainContainer}`}>
-                <div  data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='flex justify-between mb-24 '>
+                <div  data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='lg:flex lg:justify-between mb-24 '>
                 <div >
                     <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className="avatar ">
-                    <div className="w-96 rounded-full">
+                    <div className="lg:w-96 w-11/12 lg:ml-0 ml-14 rounded-full">
                         <img src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fG1hbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" />
                     </div>
                     </div>
@@ -33,7 +33,7 @@ const AboutPage = () => {
                 </div>
              <CaraouselSection/>
 
-        <div className={styles.expSection}>
+        {/* <div className={styles.expSection}>
             <div className={styles.ExpLeft}>
                 <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={styles.dateTxt}>EXPERIENCES</h1>
                 <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='mt-96 text-lg tracking-wide'>Didn't expect Myspace to be a career-launcher, but that's how I got my start in design. As a mostly self-taught designer, I've worked for startups, agencies, and even solo. These days I'm based in Denver—but I'm a big remote work advocate.</p>
@@ -56,7 +56,7 @@ const AboutPage = () => {
                     <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='ml-32 text-2xl font-bold'>Senior Designer <br /> Shopify</h1>
                 </div>
             </div>
-        </div>
+        </div> */}
             </div>
      
        

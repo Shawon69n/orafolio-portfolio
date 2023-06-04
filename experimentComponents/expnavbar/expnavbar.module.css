@@ -1,0 +1,110 @@
+.desktopNav {
+    display: flex;
+    align-items: center;
+	justify-content: center;
+    
+    
+}
+.icon1{
+	width: 30px;
+	height: 30px;
+}
+
+.icon2{
+	width: 40px;
+	height: 40px;
+	margin-left: 54px;
+	margin-right: 118px;
+}
+
+
+.desktopNav> .logo {
+	display: none;
+    padding: 1rem;
+    
+}
+
+.desktopNav > .desktopMenu {
+    display: flex;
+    list-style-type: none;
+	align-items: center;
+	
+ }
+
+  .mobileMenu{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    transform: translateY(-50%, 0);
+    top: 50px;
+    list-style-type: none;
+    text-align: center;
+    padding: 1rem 2rem;
+	transition: transform .5s ease-in-out;
+    background: #ffffff;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    z-index: 1;
+ }
+
+ .mobileMenu> li {
+    width: 100vw;
+    padding:10px ;
+	font-size: 20px;
+	font-weight: 700;
+    
+}
+
+ .mobileMenu> li > a {
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    font-size: 0.85rem;
+    }
+
+.desktopMenu > li  {
+    padding: 1rem;
+	margin-right: 64px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+	font-weight: 700;
+ }
+
+
+
+.mobileMenuButton {
+    display: none;
+    margin-right: 1rem;
+    color: rgb(0, 0, 0);
+	font-size: 20px;
+	font-weight: 700;
+}
+
+@media screen and (max-width: 600px) {
+    .desktopMenu {
+        display: none !important;
+    }
+
+    .mobileMenu{
+        display: flex !important;
+    }
+	
+
+    .mobileMenuButton {
+        display: block !important;
+		position: absolute;
+		right: 0;
+    }
+	.desktopNav> .logo {
+		display: inline;
+		padding: 1rem;
+		font-size: 1.25rem;
+		font-weight: bolder;
+		color: rgb(3, 3, 3);
+	}
+	.nav {
+		display: flex;
+		align-items: center;
+	}
+}

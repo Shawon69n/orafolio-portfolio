@@ -6,7 +6,8 @@ import Link from 'next/link';
 const WorkPage = () => {
   return (
     <div className={styles.MainContainer}>
-        <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='mt-24 mb-5 font-bold text-7xl text-black'>Selected Project</h1>
+       <div className='lg:ml-0 ml-8'>
+       <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='mt-24 mb-5 font-bold text-7xl text-black'>Selected Project</h1>
          <div className='mt-16'>
         <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={styles.center}>
             <div className={styles.articleCard}>
@@ -32,7 +33,7 @@ const WorkPage = () => {
         </div>
          </div>
 
-         <div className='flex'>
+         <div className='lg:flex'>
                 <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" >
                     <div className={styles.articleCard2}>
                     <div className={styles.content}>
@@ -55,7 +56,7 @@ const WorkPage = () => {
                         <img  src="https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad470e90ea53220438bf_Nothing-Phone-Mockup-016.jpeg" />
                     </div>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='ml-3' >
+                <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='lg:ml-3' >
                     <div className={styles.articleCard2}>
                     <div className={styles.content}>
                     <div className=' ml-6'>
@@ -104,6 +105,7 @@ const WorkPage = () => {
             </div>
         </div>
          </div>
+       </div>
 
     <PastClientCaraousel/>
     </div>

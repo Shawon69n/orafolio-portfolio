@@ -177,3 +177,33 @@
     .arrowBtn2:hover .arrow{
       rotate: -50grad;
     }
+
+
+
+    @media screen and (max-width: 640px) {
+      .MainContainer{
+        width: 640px;
+        margin: 0 auto;
+      }
+
+      .articleCard {
+        width: 574px;
+        height: 740px;
+        border-radius: 32px;
+        overflow: hidden;
+        position: relative;
+        font-family: Arial, Helvetica, sans-serif;
+      
+      }
+      .articleCard2 {
+        width: 574px;
+        height: 740px;
+        border-radius: 32px;
+        overflow: hidden;
+        position: relative;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 24px ;
+      }
+  
+
+    }

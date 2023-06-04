@@ -28,3 +28,30 @@
     border-radius: 8px;
     margin-top: 10px;
 }
+
+
+@media screen and (max-width: 640px) {
+  
+    .mainContainer{
+        width: 640px;
+        height: 835px;
+        margin: 0 auto;
+        background: #131315;
+        border-radius: 40px;
+        color: white;
+    }
+    .rightTxt{
+        margin-left: 0px;
+    }
+
+    .carouselDiv{
+        width: 640px;
+        margin: 0 auto;
+    }
+    .leftTxt{
+        font-size: 12px;
+        letter-spacing: 7px;
+        color: #c7c7c7;
+        text-align: center;
+    }
+  }
