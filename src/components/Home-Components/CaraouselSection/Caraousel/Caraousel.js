@@ -10,6 +10,7 @@ import { AiOutlineArrowRight} from 'react-icons/ai';
 // import required modules
 import { Pagination, Navigation, Autoplay ,A11y } from "swiper";
 import { NavButton } from "./NavButton/Navbutton";
+import Link from "next/link";
 
 const Caraousel = () => {
     const data = [
@@ -52,7 +53,7 @@ const Caraousel = () => {
                             <p className={styles.titleTxt2}>Mobile Apps</p>
                         </div>
                 </div>
-                    <div className={styles.arrowBtn}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></div>
+                    <Link href='works/project1' className={styles.arrowBtn}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></Link>
                     </div>
                     <img  src={D.img} />
                 </div>

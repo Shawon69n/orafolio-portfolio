@@ -51,7 +51,7 @@ const WorkPage = () => {
                                 <p className={styles.titleTxt2}>Mobile Apps</p>
                             </div>
                     </div>
-                        <div className={styles.arrowBtn2}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></div>
+                        <Link href='/works/project1' className={styles.arrowBtn2}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></Link>
                         </div>
                         <img  src="https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad470e90ea53220438bf_Nothing-Phone-Mockup-016.jpeg" />
                     </div>
@@ -73,7 +73,7 @@ const WorkPage = () => {
                                 <p className={styles.titleTxt2}>Mobile Apps</p>
                             </div>
                     </div>
-                        <div className={styles.arrowBtn2}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></div>
+                        <Link href='/works/project1' className={styles.arrowBtn2}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></Link>
                         </div>
                         <img  src="https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad483efb726f0a4b5fb9_Nothing-Phone-Mockup-007.jpeg" />
                     </div>
@@ -99,7 +99,7 @@ const WorkPage = () => {
                         <p className={styles.titleTxt2}>Mobile Apps</p>
                     </div>
                </div>
-                <div className={styles.arrowBtn}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></div>
+                <Link  href='/works/project1' className={styles.arrowBtn}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></Link>
                 </div>
                 <img  src="https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad48284d878348280d3f_Nothing-Phone-Mockup-010.jpeg" />
             </div>

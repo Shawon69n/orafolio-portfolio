@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './about.module.css'
 import CaraouselSection from '../Home-Components/CaraouselSection/CaraouselSection';
 import Footer from '../SharedComp/Footer/Footer';
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 const AboutPage = () => {
+
+    useEffect(() =>{
+        Aos.init();
+    
+      },[])
 
     return (
             <div className={`${styles.mainContainer}`}>

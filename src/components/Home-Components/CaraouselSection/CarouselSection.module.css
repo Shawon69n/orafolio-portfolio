@@ -20,6 +20,28 @@
    
     
 }
+.imgSlideTxt2 img{
+    opacity: 0;
+  
+}
+
+.imgSlideTxt2:hover h1{
+    transform: translateX(-20px);
+    transition: all 0.3s ease-in-out;
+  
+}
+.imgSlideTxt2:hover img{
+    opacity: 1;
+    transform: translateX(10px);
+   
+    
+}
+
+.hidden2 {
+  transform: translateX(-10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
 
 
   .Txt{
@@ -36,7 +58,7 @@
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
 
-
+ 
   @media screen and (max-width: 640px) {
  .HeroContainer{
   width: 640px;
@@ -47,6 +69,13 @@
   opacity: 0;
 }
 .imgSlideTxt img{
+  display: none;
+
+}
+ .imgSlideTxt2:hover img{
+  opacity: 0;
+}
+.imgSlideTxt2 img{
   display: none;
 
 }

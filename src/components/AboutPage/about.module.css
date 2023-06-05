@@ -95,16 +95,26 @@
         margin-bottom: 180px;
     }
 
+    .ExpRight{
+        width: 100%;
+    }
+
     .rightTxt1{
         display: block;
         padding-bottom: 40px;
-        border-bottom: 1px solid #c7c7c7;
+        border-bottom: 1px solid #c7c7c7c9;
     }
     .rightTxt{
         display: block;
         padding-bottom: 40px;
         padding-top: 64px;
-        border-bottom: 1px solid #c7c7c7;
+        border-bottom: 1px solid #c7c7c7c9;
+        border-top: 1px solid #c7c7c7c9;
     }
-  
+    .dateTxt{
+        font-size: larger;
+        letter-spacing: 5px;
+        color: #c7c7c7;
+        margin-bottom: 8px;
+    }
   }

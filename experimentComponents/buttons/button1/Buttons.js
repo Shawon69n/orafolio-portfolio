@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Button.module.css'
+import Link from 'next/link';
 const Buttons = () => {
     return (
         <div className={styles.MainContainer}>
@@ -8,7 +9,7 @@ const Buttons = () => {
                 <span className={styles.circle} aria-hidden="true">
                     <span className={`${styles.icon} ${styles.arrow}`}></span>
                 </span>
-                <span className={styles['button-text']}>Contact Me</span>
+                <Link href='/contact' className={styles['button-text']}>Contact Me</Link>
                 </button>
             </div>
         </div>
