@@ -80,5 +80,31 @@
         font-weight: 700;
         color: black;
     }
-    
+
+    .expSection{
+        width: 640px;
+       
+       display: block;
+       margin-bottom: 500px;
+    }
+
+    .ExpLeft p{
+        display: none;
+    }
+    .ExpLeft {
+        margin-bottom: 180px;
+    }
+
+    .rightTxt1{
+        display: block;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #c7c7c7;
+    }
+    .rightTxt{
+        display: block;
+        padding-bottom: 40px;
+        padding-top: 64px;
+        border-bottom: 1px solid #c7c7c7;
+    }
+  
   }

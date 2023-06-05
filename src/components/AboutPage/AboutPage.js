@@ -33,7 +33,7 @@ const AboutPage = () => {
                 </div>
              <CaraouselSection/>
 
-        {/* <div className={styles.expSection}>
+        <div className={styles.expSection}>
             <div className={styles.ExpLeft}>
                 <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={styles.dateTxt}>EXPERIENCES</h1>
                 <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='mt-96 text-lg tracking-wide'>Didn't expect Myspace to be a career-launcher, but that's how I got my start in design. As a mostly self-taught designer, I've worked for startups, agencies, and even solo. These days I'm based in Denver—but I'm a big remote work advocate.</p>
@@ -41,22 +41,22 @@ const AboutPage = () => {
             <div className={styles.ExpRight}>
                 <div  className={styles.rightTxt1}>
                     <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={styles.dateTxt}>2022 - Present</h1>
-                    <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='ml-32 text-2xl font-bold'>Senior Designer <br /> Shopify</h1>
+                    <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='lg:ml-32 text-2xl font-bold'>Senior Designer <br /> Shopify</h1>
                 </div>
                 <div className={styles.rightTxt} >
                     <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={styles.dateTxt}>2022 - Present</h1>
-                    <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='ml-32 text-2xl font-bold'>Senior Designer <br /> Shopify</h1>
+                    <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='lg:ml-32 text-2xl font-bold'>Senior Designer <br /> Shopify</h1>
                 </div>
                 <div className={styles.rightTxt} >
                     <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={styles.dateTxt}>2022 - Present</h1>
-                    <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='ml-32 text-2xl font-bold'>Senior Designer <br /> Shopify</h1>
+                    <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='lg:ml-32 text-2xl font-bold'>Senior Designer <br /> Shopify</h1>
                 </div>
                 <div className={styles.rightTxt} >
                     <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={styles.dateTxt}>2022 - Present</h1>
-                    <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='ml-32 text-2xl font-bold'>Senior Designer <br /> Shopify</h1>
+                    <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='lg:ml-32 text-2xl font-bold'>Senior Designer <br /> Shopify</h1>
                 </div>
             </div>
-        </div> */}
+        </div>
             </div>
      
        

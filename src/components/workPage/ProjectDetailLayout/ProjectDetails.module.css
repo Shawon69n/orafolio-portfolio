@@ -13,6 +13,11 @@
     
 }
 
+.middleDivImg{
+    height: 600px;
+    margin-bottom: 24px;
+}
+
 .imgSize{
     width: 100%;
     height: 100%;
@@ -51,4 +56,55 @@
     font-weight: 700;
     color: #000000;
     
+  }
+
+
+  @media screen and (max-width: 640px) {
+    .MainContainer{
+      width: 640px;
+      margin: 0 auto;
+      
+    }
+
+    
+    .imgDiv1{
+        width: 490px;
+        height: 300px;
+        margin-bottom: 24px;
+    }
+    .imgDiv2{
+        width: 490px;
+        height: 300px;
+        display: block;
+        
+    }
+
+    .txtDiv{
+        width: 500px;
+        height: 162px;
+        font-size: 18px;
+        font-weight: 400;
+        margin-top: 20px;
+    }
+    .middleDivImg{
+        width: 490px;
+        height: 600px;
+        margin-bottom: 24px;
+        margin-top: 164px;
+    }
+    .title {
+        font-size: 14px;
+        color: #c7c7c7;
+        margin-bottom: 7px;
+        letter-spacing: 4px;
+      }
+      
+       .titleTxt1 {
+        margin-top: 2px;
+        font-size: 16px;
+        font-weight: 700;
+        color: #000000;
+        
+      }
+
   }

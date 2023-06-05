@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../Header/Navbar'
 import Footer from '../Footer/Footer'
 import Head from 'next/head'
+import { ExpNavbar } from '../../../../experimentComponents/expnavbar/ExpNavbar'
 const NavFootLayout = ({children,title}) => {
   return (
     <div>
@@ -12,7 +13,7 @@ const NavFootLayout = ({children,title}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        <Navbar/>
+        <ExpNavbar/>
         {children}
         <Footer/>
     </div>
