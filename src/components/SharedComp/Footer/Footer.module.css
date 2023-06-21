@@ -15,7 +15,9 @@
     border-bottom: 1px solid #575656;
     padding: 64px 0px 64px 0px;
 }
-
+.contactBtn{
+    margin-left: 36rem;
+}
 @media screen and (max-width: 640px) {
     .footer{
         background: #131315;
@@ -31,5 +33,8 @@
     border-top: 1px solid #575656;
     border-bottom: 1px solid #575656;
   
+}
+.contactBtn{
+    margin-left: 128px;
 }
   }

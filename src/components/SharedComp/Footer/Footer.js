@@ -7,7 +7,7 @@ const Footer = () => {
              <footer className={`${styles.footer}`}>
                 <div className='mb-16'>
                     <h1 className='lg:text-8xl text-5xl font-semibold text-center text-white'>Have a Cool <br /> Project?</h1>
-                    <div className='lg:ml-96 ml-32 mt-8'>
+                    <div className={`${styles.contactBtn}  mt-8`}>
                     <Buttons/>
                     </div>
                 </div>

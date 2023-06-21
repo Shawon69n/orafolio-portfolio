@@ -1,0 +1,32 @@
+.card {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 200px;
+    padding-bottom: 50px;
+  }
+
+  .LoginInput[type="email"],
+  .LoginInput[type="password"] {
+    width: 92%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .loginButton[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .loginButton[type="submit"]:hover {
+    background-color: #45a049;
+  }
