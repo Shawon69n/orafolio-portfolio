@@ -1,4 +1,4 @@
-import { addDoc, arrayUnion, collection, deleteField, doc, getDocs, serverTimestamp, updateDoc } from 'firebase/firestore';
+import { addDoc, arrayUnion, collection, deleteDoc, deleteField, doc, getDocs, serverTimestamp, updateDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { db, storage } from '../../../firebase.init';
 import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
@@ -22,8 +22,16 @@ const edithometexts = () => {
 
     //ADD DATA HERE 
     const handleMultipleImages = (e) => {
-        for (let i = 0; i < e.target.files.length; i++) {
-        const newImage = e.target.files[i];
+      const selectedFiles = e.target.files;
+  
+      if (selectedFiles.length !== 2) {
+        // Display an error message or take appropriate action
+        alert("Please select exactly two images.");
+        return;
+      }
+
+        for (let i = 0; i < selectedFiles.length;  i++) {
+        const newImage = selectedFiles[i];
         setImages((prevState) => [...prevState, newImage]);
         }
         
@@ -164,6 +172,27 @@ const edithometexts = () => {
       }
      }
 
+
+     //DELETE DATA 
+     const deleteData = async (id, allImages) => {
+      allImages.forEach((url) => {
+        const path = url.split('%2F')[1].split('?')[0];
+        const urlRef = ref(storage, `homeimages/${path}`);
+        deleteObject(urlRef)
+      });
+
+      let fieldToEdit = doc(db, 'homepage', id);
+      deleteDoc(fieldToEdit)
+      .then(() => {
+          alert('Data Deleted')
+          getData()
+      })
+      .catch((err) => {
+          alert('Cannot Delete that field..')
+      })
+          
+    };
+
     return (
 <div className='mainDiv'>
     { loading ?  <h1>LOADING</h1> : <div>
@@ -222,7 +251,7 @@ const edithometexts = () => {
                                 <img className='ml-3' style={{width: '200px', height:'200px'}} src={d.allImages[1]} alt="" /> 
                                 </div>
                                 <button onClick={() =>getSingleData(d.id,d.headTxt,d.subTxt,d.allImages,d.ct1,d.ct2,d.ct3,d.ct4)} className='btn-sm btn-info mt-5 ' >Update</button>
-                                <button  className='btn-sm btn-error mt-5'>Delete</button>
+                                <button onClick={() => deleteData(d.id,d.allImages)} className='btn-sm btn-error mt-5'>Delete</button>
                             </div>
                         </div>
                       )

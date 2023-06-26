@@ -11,15 +11,30 @@ import { AiOutlineArrowRight} from 'react-icons/ai';
 import { Pagination, Navigation, Autoplay ,A11y } from "swiper";
 import { NavButton } from "./NavButton/Navbutton";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../../../firebase.init";
 
 const Caraousel = () => {
-    const data = [
-        { id: 1, img: "https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad48284d878348280d3f_Nothing-Phone-Mockup-010.jpeg" },
-        { id: 2, img: "https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad470e90ea53220438bf_Nothing-Phone-Mockup-016.jpeg" },
-        { id: 3, img: "https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad483efb726f0a4b5fb9_Nothing-Phone-Mockup-007.jpeg" },
-        { id: 4, img: "https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad48284d878348280d3f_Nothing-Phone-Mockup-010.jpeg" },
-        { id: 5, img: "https://assets.ls.graphics/625816a3416990dd61391b9b/63fbad48b8989934ebd889aa_Nothing-Phone-Mockup-004.jpeg" },
-      ];
+    //GET DATA HERE
+ const [data,setData] = useState([])
+ const databaseRef = collection(db,'projects')
+ const [loading,setLoading] = useState(true)
+ useEffect(() =>{
+     getData()
+   },[])
+
+ const getData = async() => {
+     await getDocs(databaseRef)
+     .then((response) =>{
+       setLoading(false)
+       setData(response.docs.map((data)=>{
+         return {...data.data(), id: data.id}
+       }))
+     })
+   }
+
+   console.log(data)
     return (
         <div className={styles.CaraouselContainer}>
               <Swiper
@@ -31,7 +46,7 @@ const Caraousel = () => {
              }}
 
             
-            modules={[ Pagination, Navigation , A11y, Autoplay]}
+            modules={[ Pagination, Navigation , A11y, Autoplay ]}
             className="mySwiper"
         >
            
@@ -40,22 +55,18 @@ const Caraousel = () => {
                 <div className={styles.articleCard}>
                 <div className={styles.content}>
                 <div className='lg:flex '>
-                    <div className='mb-5 mt-5'>
+                    <div className='mb-5 mt-5 w-52'>
                             <h1 className={styles.title}>PROJECT</h1>
-                            <p className={styles.titleTxt1}>Desinging a social</p>
-                            <p className={styles.titleTxt1}>Media app for the</p>
-                            <p className={styles.titleTxt1}>Black Experience</p>
-                        </div>
-                        <div className='lg:ml-10'>
+                            <p className={styles.titleTxt1}>{D.pName}</p>
+                    </div>
+                        <div className=' lg:ml-10 mb-5 mt-5 w-52'>
                             <h1 className={styles.title}>TYPE</h1>
-                            <p className={styles.titleTxt2}>Branding Project</p>
-                            <p className={styles.titleTxt2}>Web Desing</p>
-                            <p className={styles.titleTxt2}>Mobile Apps</p>
+                            <p className={styles.titleTxt1}>{D.pName}</p>
                         </div>
                 </div>
                     <Link href='works/project1' className={styles.arrowBtn}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></Link>
                     </div>
-                    <img  src={D.img} />
+                    <img  src={D.allImages[0]} />
                 </div>
         </div>
         </SwiperSlide>)}
