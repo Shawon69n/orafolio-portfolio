@@ -16,24 +16,26 @@ const editabout = () => {
     const [loading,setLoading] = useState(true);
     const databaseRef = collection(db,'aboutpage');
 
-    //GETTING DATA HERE
-    const [data,setData] = useState([])
+          //GET DATA HERE
+ const [data,setData] = useState([])
 
-    useEffect(() =>{
-        getData()
-      },[])
 
-    const getData = async() => {
-        await getDocs(databaseRef)
-        .then((response) =>{
-          setLoading(false)
-          setData(response.docs.map((data)=>{
-            return {...data.data(), id: data.id}
-          }))
-        })
-      }
 
+  useEffect(() =>{
+     getData()
+   },[])
+
+   const getData = async() => {
+    await getDocs(databaseRef)
+    .then((response) =>{
+      setLoading(false)
+      setData(response.docs.map((data)=>{
+        return {...data.data(), id: data.id}
+      }))
+    })
+  }
     
+ 
 
     // UPLOADING HERE 
     // const handleUpload = async(e) =>{
@@ -98,6 +100,7 @@ const editabout = () => {
          setIsUpdate(true);
        }
 
+       
        const updateData = async(e) =>{
         let fieldToEdit = doc(db, 'aboutpage', ID);
         e.preventDefault() 
@@ -212,29 +215,31 @@ const editabout = () => {
 
 
               <input  className="file-input file-input-bordered w-full   mb-5" onChange={(e) => { setImgUrl(e.target.files[0]) }}  type="file" accept='image/*'  name="" id="" /> <br />
-              <input type='submit' value="UPDATE"  className='btn w-full  '/> 
-      </form> :  <div className='mt-20  grid grid-cols-3 gap-12'>
-                {data.map((d)=>{
-                    return (
-                        <div key={d.id} style={{border:'1px solid black'}} className='w-full p-5 '>
-                            <div className=' pl-5 pr-5'>
-                                <h4 className='text-xl mt-8 font-bold'>Head Text : {d.headTxt}</h4>
-                                <h4 className='text-sm font-semibold mt-8'>Sub Text: {d.subTxt}</h4>
-                                {/* {d.ExpFields.map((expField, index) => (
-                                  <div key={index}>
-                                    <h1>Year: {expField.year}</h1>
-                                    <h1>Platform: {expField.platform}</h1>
-                                  </div>
-                                ))} */}
-                                <div className='flex mt-14'>
-                                <img style={{width: '200px', height:'200px'}} src={d.url} alt="" />  
-                                </div>
-                                <button onClick={() =>getSingleData(d.id,d.headTxt,d.subTxt,d.url,d.ExpFields,d.expTxt)} className='btn-sm btn-info mt-5 ' >Update</button>
-                                
+              <div className='flex justify-between'>
+              <input type='submit' value="UPDATE"  className='btn w-4/12  '/> 
+              <button onClick={()=> setIsUpdate(false)} className='btn btn-error'>Cancel</button>
+              </div>
+      </form> : 
+      
+      <div className='mt-20 '>
+                       {data.map((d)=>{
+                          return(
+                            <div key={d.id} style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} className=' flex rounded-lg justify-between p-5 '>
+                            
+                            <div className='w-2/4 mt-14'>
+                             <img className='w-full h-96' src={d.url} alt="" />  
                             </div>
+
+                            <div className='w-2/4 mt-10 ml-10'>
+                               <h4 className='text-xl mt-8 font-bold'>Head Text : <br /> {d.headTxt}</h4>
+                               <h4 className='text-sm font-semibold mt-8'>Sub Text: <br /> {d.subTxt}</h4>
+                               <button onClick={() =>getSingleData(d.id,d.headTxt,d.subTxt,d.url,d.ExpFields,d.expTxt)} className='btn btn-active btn-accent mt-5 ' >Edit</button>
+                            </div>
+                             
+                       
                         </div>
-                      )
-                })}
+                          )
+                       })}
             </div>}
           
             {/* show data here  */}
