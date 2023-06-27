@@ -36,38 +36,38 @@ const editabout = () => {
     
 
     // UPLOADING HERE 
-    const handleUpload = async(e) =>{
-        e.preventDefault()
-        if(imgUrl){
-            const imageRef = ref(storage, `aboutimage/${imgUrl.name}`);
-            await uploadBytes(imageRef, imgUrl).then(() =>{
-              getDownloadURL(imageRef).then((url) =>{  
-                addDoc(databaseRef,{
-                  headTxt,
-                  subTxt,
-                  url,
-                  expTxt,
-                  ExpFields: expFields,
-                  Timestamp : serverTimestamp()
-                })
-                .then(() => {
-                  alert('Data added')
-                  setHeadTxt('')
-                  setSubTxt('')
-                  setImgUrl('')
-                  setExpFields([{ year: '', platform: '' },
-                  { year: '', platform: '' },
-                  { year: '', platform: '' },
-                  { year: '', platform: '' }])
-                })
-                .catch((err) =>{
-                  console.error
-                }) 
-              })
-            })
+    // const handleUpload = async(e) =>{
+    //     e.preventDefault()
+    //     if(imgUrl){
+    //         const imageRef = ref(storage, `aboutimage/${imgUrl.name}`);
+    //         await uploadBytes(imageRef, imgUrl).then(() =>{
+    //           getDownloadURL(imageRef).then((url) =>{  
+    //             addDoc(databaseRef,{
+    //               headTxt,
+    //               subTxt,
+    //               url,
+    //               expTxt,
+    //               ExpFields: expFields,
+    //               Timestamp : serverTimestamp()
+    //             })
+    //             .then(() => {
+    //               alert('Data added')
+    //               setHeadTxt('')
+    //               setSubTxt('')
+    //               setImgUrl('')
+    //               setExpFields([{ year: '', platform: '' },
+    //               { year: '', platform: '' },
+    //               { year: '', platform: '' },
+    //               { year: '', platform: '' }])
+    //             })
+    //             .catch((err) =>{
+    //               console.error
+    //             }) 
+    //           })
+    //         })
       
-          }
-    }
+    //       }
+    // }
 
 
     const [expFields, setExpFields] = useState([
@@ -167,11 +167,8 @@ const editabout = () => {
 
     return (
         <div className='AboutContainer'>
-            <form onSubmit={isUpdate? updateData : handleUpload} className='aboutFormDiv' >
-              <h1 className='text-center font-bold pt-5 pb-5 text-2xl'>UPLOAD HOME TEXT & PHOTO</h1>
-
-
-
+          {isUpdate? <form onSubmit={isUpdate && updateData } className='aboutFormDiv' >
+        <h1 className='text-center font-bold pt-5 pb-5 text-2xl'>UPLOAD HOME TEXT & PHOTO</h1>
         <div className='flex justify-between'>
               <div className='w-3/6'>
                 <label htmlFor="platfrom">Heading Text :</label> <br />
@@ -215,13 +212,8 @@ const editabout = () => {
 
 
               <input  className="file-input file-input-bordered w-full   mb-5" onChange={(e) => { setImgUrl(e.target.files[0]) }}  type="file" accept='image/*'  name="" id="" /> <br />
-              {isUpdate? <input type='submit' value="UPDATE"  className='btn w-full  '/> : 
-              <input type='submit' value="UPLOAD"  className='btn w-full  '/>
-              }
-          </form>
-
-            {/* show data here  */}
-    <div className='mt-20  grid grid-cols-3 gap-12'>
+              <input type='submit' value="UPDATE"  className='btn w-full  '/> 
+      </form> :  <div className='mt-20  grid grid-cols-3 gap-12'>
                 {data.map((d)=>{
                     return (
                         <div key={d.id} style={{border:'1px solid black'}} className='w-full p-5 '>
@@ -243,7 +235,10 @@ const editabout = () => {
                         </div>
                       )
                 })}
-            </div>
+            </div>}
+          
+            {/* show data here  */}
+   
 
         </div>
     );

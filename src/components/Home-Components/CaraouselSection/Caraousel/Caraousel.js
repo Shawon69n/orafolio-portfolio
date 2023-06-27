@@ -34,7 +34,7 @@ const Caraousel = () => {
      })
    }
 
-   console.log(data)
+   
     return (
         <div className={styles.CaraouselContainer}>
               <Swiper
@@ -59,10 +59,11 @@ const Caraousel = () => {
                             <h1 className={styles.title}>PROJECT</h1>
                             <p className={styles.titleTxt1}>{D.pName}</p>
                     </div>
-                        <div className=' lg:ml-10 mb-5 mt-5 w-52'>
+
+                    <div className=' lg:ml-10 mb-5 mt-5 w-52'>
                             <h1 className={styles.title}>TYPE</h1>
                             <p className={styles.titleTxt1}>{D.pName}</p>
-                        </div>
+                    </div>
                 </div>
                     <Link href='works/project1' className={styles.arrowBtn}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></Link>
                     </div>

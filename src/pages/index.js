@@ -11,18 +11,42 @@ import PastClientSection from '@/components/Home-Components/PastClientSection/Pa
 import Footer from '@/components/SharedComp/Footer/Footer'
 import Aos from 'aos'
 import 'aos/dist/aos.css';
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import PastClientCaraousel from '@/components/SharedComp/pastClientCaraousel/PastClientCaraousel'
 import NavFootLayout from '@/components/SharedComp/NavFootLayout/NavFootLayout'
+import { db } from '../../firebase.init'
+import { collection, getDocs } from 'firebase/firestore'
 
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+
   useEffect(() =>{
     Aos.init();
 
   },[])
+
+ //GET DATA HERE
+ const [data,setData] = useState([])
+ const databaseRef = collection(db,'homepage')
+ const [loading,setLoading] = useState(true)
+ useEffect(() =>{
+     getData()
+   },[])
+
+ const getData = async() => {
+     await getDocs(databaseRef)
+     .then((response) =>{
+       setLoading(false)
+       setData(response.docs.map((data)=>{
+         return {...data.data(), id: data.id}
+       }))
+     })
+   }
+
+ 
+
   return (
     <NavFootLayout>
       <Head>
@@ -35,11 +59,11 @@ export default function Home() {
       <main >
         <div className={styles.main}>
         
-        <Hero/>
-        <AboutMe/>
+        <Hero />
+        <AboutMe />
         <CaraouselSection/>
-         <PastClientSection/>
-       <PastClientCaraousel/>  
+        <PastClientSection/>
+        <PastClientCaraousel/>  
         </div>
         
       </main>

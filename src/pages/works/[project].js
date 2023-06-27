@@ -1,7 +1,8 @@
 import ProjectDetailLayout from '@/components/workPage/ProjectDetailLayout/ProjectDetailLayout';
 import React from 'react';
 
-const project1 = () => {
+const project = () => {
+    
     return (
         <ProjectDetailLayout>
             
@@ -9,4 +10,4 @@ const project1 = () => {
     );
 };
 
-export default project1;
+export default project;

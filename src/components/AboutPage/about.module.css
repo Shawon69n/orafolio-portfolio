@@ -48,6 +48,7 @@
 .rightTxt1{
     display: flex;
     padding-bottom: 40px;
+    padding-top: 40px;
     border-bottom: 1px solid #c7c7c7;
 }
 .rightTxt{
