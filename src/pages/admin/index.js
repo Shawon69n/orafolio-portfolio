@@ -5,21 +5,22 @@ import LoginPage from '@/Authentication/LoginPage';
 import Link from 'next/link';
 import { signOut } from 'firebase/auth';
 import AdminPage from '@/AdminComponent/AdminPage';
-
+import { AiOutlineLogout} from 'react-icons/ai';
+import Loading from '@/components/SharedComp/Loading/Loading';
 
 const index = () => {
     const [user, loading, error] = useAuthState(auth);
     
     return (
         <div>
-            {loading? <h1>LOADING</h1> :
+            {loading? <div className='ml-5 mt-28'><Loading/></div> :
 
                 <div>
                     {user? 
                     
-                    <div>
+                    <div className='AdminContainer'>
                         <AdminPage/>
-                        <Link href="/" onClick={() => signOut(auth)}>Signout</Link>
+                        <Link className='ml-[940px] mt-10 flex w-20 p-2 btn btn-outline btn-error ' href="/admin" onClick={() => signOut(auth)}>Signout</Link>
                     </div>
                     
                     : <LoginPage/> }

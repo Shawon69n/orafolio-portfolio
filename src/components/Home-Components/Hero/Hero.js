@@ -5,23 +5,23 @@ import Button2 from '../../../../experimentComponents/buttons/button2/Button2';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../../../firebase.init';
 
-const Hero = () => {
-   //GET DATA HERE
- const [data,setData] = useState([])
- const databaseRef = collection(db,'homepage')
- const [loading,setLoading] = useState(true)
- useEffect(() =>{
-     getData()
-   },[])
+const Hero = ({data}) => {
+//    //GET DATA HERE
+//  const [data,setData] = useState([])
+//  const databaseRef = collection(db,'homepage')
+//  const [loading,setLoading] = useState(true)
+//  useEffect(() =>{
+//      getData()
+//    },[])
 
-   const getData = async () => {
-    await getDocs(databaseRef).then((response) => {
-      setLoading(false);
-      if (response.docs.length > 0) {
-        setData(response.docs[0].data());
-      }
-    });
-  };
+//    const getData = async () => {
+//     await getDocs(databaseRef).then((response) => {
+//       setLoading(false);
+//       if (response.docs.length > 0) {
+//         setData(response.docs[0].data());
+//       }
+//     });
+//   };
 
  
     

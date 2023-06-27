@@ -2,6 +2,9 @@ import { addDoc, collection, deleteDoc, doc, getDocs , serverTimestamp, updateDo
 import React, { useEffect, useState } from 'react';
 import { db, storage } from '../../../firebase.init';
 import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { v4 } from 'uuid';
+import Link from 'next/link';
+import { HiArrowLeft} from 'react-icons/hi';
 
 const editpastclient = () => {
     const [isUpdate, setIsUpdate] = useState(false);
@@ -14,7 +17,7 @@ const editpastclient = () => {
     const handleUpload = async(e) =>{
         e.preventDefault()
         if(imgUrl){
-            const imageRef = ref(storage, `pastclientimages/${imgUrl.name}`);
+            const imageRef = ref(storage, `pastclientimages/${imgUrl.name + v4()}`);
             await uploadBytes(imageRef, imgUrl).then(() =>{
               getDownloadURL(imageRef).then((url) =>{  
                 addDoc(databaseRef,{
@@ -71,45 +74,55 @@ const editpastclient = () => {
       }
       //UPDATE FUNCTION
       const updateData = async(e) =>{
-        e.preventDefault()
         let fieldToEdit = doc(db, 'pastclient', ID);
-
-        if(deleteUrl){
+        e.preventDefault() 
+        if(imgUrl){
           const path = deleteUrl.split('%2F')[1].split('?')[0];
           const urlRef = ref(storage, `pastclientimages/${path}`);
           deleteObject(urlRef)
-        }
-        else{
-          return console.log('couldn delete');
-        }
-      
-      
-        if(imgUrl){
-          const imageRef = ref(storage, `pastclientimages/${imgUrl.name}`);
-          await uploadBytes(imageRef, imgUrl).then(() =>{
-            getDownloadURL(imageRef).then((url) =>{  
-              updateDoc(fieldToEdit, {
-                platform: platform,
-                desc : desc,
-                url : url ,
-                Timestamp : serverTimestamp()
-              })
-              .then(() => {
-                alert('Data Updated')
-                getData()
-                setPlatform('')
-                setDesc('')
-                setImgUrl('')
-                setIsUpdate(false)
-              })
-              .catch((err) => {
-                console.log(err);
+          .then(() =>{
+            const imageRef = ref(storage, `pastclientimages/${imgUrl.name + v4()}`);
+             uploadBytes(imageRef, imgUrl).then(() =>{
+              getDownloadURL(imageRef).then((url) =>{  
+                updateDoc(fieldToEdit, {
+                  platform: platform,
+                  desc : desc,
+                  url: url,
+                  Timestamp: serverTimestamp(),
+                })
+                .then(() => {
+                  alert('Data Updated')
+                  getData()
+                  setPlatform('')
+                  setDesc('')
+                  setImgUrl('')
+                  setIsUpdate(false)
+                })
+                .catch((err) => {
+                  console.log(err);
+                })
               })
             })
+            
           })
-      
         }
-      
+        else{
+          updateDoc(fieldToEdit, {
+            platform: platform,
+            desc : desc,
+            Timestamp: serverTimestamp(),
+          });
+
+          alert('Data Updated')
+                  getData()
+                  setPlatform('')
+                  setDesc('')
+                  setImgUrl('')
+                  setIsUpdate(false)
+
+
+
+        }
         
       }
 
@@ -134,6 +147,8 @@ const editpastclient = () => {
     return (
         <div className='mainDiv'>
             {loading ? <h1>LOADING</h1> : <div>
+            <Link data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" href="/admin" className={` flex items-center mt-6`}> <span className='arrow'><HiArrowLeft/></span> BACK</Link>
+
             <div className='inputDiv flex justify-center'>
                 <form onSubmit={isUpdate? updateData: handleUpload}>
                     <h1 className='text-center font-bold pt-5 pb-5 text-2xl'>UPLOAD CLIENT</h1>
@@ -149,12 +164,12 @@ const editpastclient = () => {
             <div className='mt-20  grid grid-cols-3 gap-12'>
                 {data.map((d)=>{
                     return (
-                        <div key={d.id} style={{border:'1px solid black'}} className='flex w-full '>
+                        <div key={d.id} style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} className='flex rounded-lg w-full '>
                           <img style={{width: '200px', height:'200px'}} src={d.url} alt="" /> <br />
                             <div className='ml-10 pl-5 pr-5'>
                                 <h4 className='text-xl mt-8'>{d.platform}</h4>
-                                <button onClick={() =>getSingleData(d.id,d.platform,d.desc,d.url,)} className='btn-sm btn-info mt-10 ' >Update</button>
-                                <button onClick={() => deleteSingleData(d.id,d.url)} className='btn-sm btn-error mt-5'>Delete</button>
+                                <button onClick={() =>getSingleData(d.id,d.platform,d.desc,d.url,)} className='btn-sm btn btn-info mt-10 ' >Update</button>
+                                <button onClick={() => deleteSingleData(d.id,d.url)} className='btn-sm btn btn-error ml-5 mt-5'>Delete</button>
                             </div>
                         </div>
                       )

@@ -16,6 +16,7 @@ import PastClientCaraousel from '@/components/SharedComp/pastClientCaraousel/Pas
 import NavFootLayout from '@/components/SharedComp/NavFootLayout/NavFootLayout'
 import { db } from '../../firebase.init'
 import { collection, getDocs } from 'firebase/firestore'
+import Loading from '@/components/SharedComp/Loading/Loading'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -27,23 +28,22 @@ export default function Home() {
 
   },[])
 
- //GET DATA HERE
- const [data,setData] = useState([])
- const databaseRef = collection(db,'homepage')
- const [loading,setLoading] = useState(true)
- useEffect(() =>{
-     getData()
-   },[])
-
- const getData = async() => {
-     await getDocs(databaseRef)
-     .then((response) =>{
-       setLoading(false)
-       setData(response.docs.map((data)=>{
-         return {...data.data(), id: data.id}
-       }))
-     })
-   }
+   //GET DATA HERE
+   const [data,setData] = useState([])
+   const databaseRef = collection(db,'homepage')
+   const [loading,setLoading] = useState(true)
+   useEffect(() =>{
+       getData()
+     },[])
+  
+     const getData = async () => {
+      await getDocs(databaseRef).then((response) => {
+        setLoading(false);
+        if (response.docs.length > 0) {
+          setData(response.docs[0].data());
+        }
+      });
+    };
 
  
 
@@ -58,12 +58,15 @@ export default function Home() {
      
       <main >
         <div className={styles.main}>
-        
-        <Hero />
-        <AboutMe />
-        <CaraouselSection/>
-        <PastClientSection/>
-        <PastClientCaraousel/>  
+          {loading? <Loading/> :
+          <>
+            <Hero data={data} />
+            <AboutMe />
+            <CaraouselSection/>
+            <PastClientSection/>
+            <PastClientCaraousel/> 
+          </>}
+         
         </div>
         
       </main>

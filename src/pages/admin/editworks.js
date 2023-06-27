@@ -3,7 +3,8 @@ import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage
 import React, { useEffect, useState } from 'react';
 import { db, storage } from '../../../firebase.init';
 import { v4 } from 'uuid';
-
+import Link from 'next/link';
+import { HiArrowLeft} from 'react-icons/hi';
 const editworks = () => {
     const [projectName,setProjectName] = useState('');
     const [year,setYear] = useState('');
@@ -200,6 +201,7 @@ const editworks = () => {
     
     return (
            <div>
+             <Link data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" href="/admin" className={` flex items-center mt-6`}> <span className='arrow'><HiArrowLeft/></span> BACK</Link>
         <div className='HomeinputDiv flex justify-center'>
           <form onSubmit={isUpdate? updateData : handleUpload}>
               <h1 className='text-center font-bold pt-5 pb-5 text-2xl'>UPLOAD PROJECT</h1>
@@ -228,11 +230,14 @@ const editworks = () => {
           </form>
         </div>
 
+       
+
+
          {/* show data here  */}
         <div className='mt-20  grid grid-cols-3 gap-12'>
                 {data.map((d)=>{
                     return (
-                        <div key={d.id} style={{border:'1px solid black'}} className='w-full p-5 '>
+                        <div key={d.id} style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} className='w-full rounded-lg p-5 '>
                             <div className=' pl-5 pr-5'>
                                 <h4 className='text-xl mt-8 font-bold'>Project Name : {d.pName}</h4>
                                 <h4 className='text-sm font-semibold mt-8'>Sub Text: {d.desc}</h4>
@@ -240,10 +245,10 @@ const editworks = () => {
                                 <h5 className='text-sm font-semibold mt-8'>Type : {d.type}</h5>
                                 <h5 className='text-sm font-semibold mt-8'>Year : {d.year}</h5>
                                 <div className='flex mt-14'>
-                                <img style={{width: '200px', height:'200px'}} src={d.allImages[0]} alt="" /> 
+                                <img className='rounded-lg' style={{width: '200px', height:'200px'}} src={d.allImages[0]} alt="" /> 
                                 </div>
-                                <button onClick={() =>getSingleData(d.id,d.pName,d.desc,d.role,d.type,d.year,d.allImages)}  className='btn-sm btn-info mt-5 ' >Update</button>
-                                <button onClick={() => deleteData(d.id,d.allImages)} className='btn-sm btn-error mt-5'>Delete</button>
+                                <button onClick={() =>getSingleData(d.id,d.pName,d.desc,d.role,d.type,d.year,d.allImages)}  className='btn-sm btn btn-info mt-5 ' >Update</button>
+                                <button onClick={() => deleteData(d.id,d.allImages)} className='btn-sm btn btn-error ml-5 mt-5'>Delete</button>
                             </div>
                         </div>
                       )

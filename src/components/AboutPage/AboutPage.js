@@ -6,6 +6,7 @@ import Aos from 'aos';
 import 'aos/dist/aos.css';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../../firebase.init';
+import Loading from '../SharedComp/Loading/Loading';
 const AboutPage = () => {
 
     useEffect(() =>{
@@ -37,7 +38,7 @@ const AboutPage = () => {
 
     return (
             <>
-                {loading? <h1>Loading</h1> :<div className={`${styles.mainContainer}`}>
+                {loading? <Loading/> :<div className={`${styles.mainContainer}`}>
                 <div  data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='lg:flex lg:justify-between mb-24 '>
                 <div >
                     <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className="avatar ">

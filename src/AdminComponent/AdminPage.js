@@ -1,14 +1,25 @@
 import Link from 'next/link';
 import React from 'react';
-
+import { MdAdminPanelSettings} from 'react-icons/md';
 const AdminPage = () => {
     return (
         <div>
-            <Link href='/admin/edithometexts'>Home texts</Link>
-            <Link href='/admin/editpastclient'>Past client</Link>
-            <Link href='/admin/editworks'>works</Link>
-            <Link href='/admin/editcontact'> Contact</Link>
-            <Link href='/admin/editabout'> About</Link>
+            <h1 className=' font-bold text-3xl pt-28 pb-12 flex ml-[630px]'>ADMIN PAGE <MdAdminPanelSettings className='ml-2 text-4xl'/></h1>
+            <div className="gridContainer">
+           
+           <Link className="card" href="/admin/edithometexts">Home </Link>
+
+           <Link className="card" href="/admin/editpastclient">Past client</Link>
+     
+           <Link className="card" href="/admin/editworks">Works</Link>
+      
+    
+           <Link className="card" href="/admin/editcontact">Contact</Link>
+       
+       
+           <Link className="card" href="/admin/editabout">About</Link>
+     
+  </div>
         </div>
     );
 };

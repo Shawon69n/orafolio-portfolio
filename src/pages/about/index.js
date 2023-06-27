@@ -4,6 +4,7 @@ import NavFootLayout from '@/components/SharedComp/NavFootLayout/NavFootLayout';
 import React from 'react';
 
 const index = () => {
+    
     return (
         <NavFootLayout title="BluFolio -About">
             <AboutPage/>

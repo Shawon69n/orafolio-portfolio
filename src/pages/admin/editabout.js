@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { db, storage } from '../../../firebase.init';
 import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { addDoc, collection, doc, getDocs, serverTimestamp, updateDoc } from 'firebase/firestore';
-
+import Link from 'next/link';
+import { HiArrowLeft} from 'react-icons/hi';
 const editabout = () => {
     const [headTxt,setHeadTxt] = useState('');
     const [subTxt,setSubTxt] = useState('');
@@ -221,7 +222,9 @@ const editabout = () => {
               </div>
       </form> : 
       
+
       <div className='mt-20 '>
+        <Link data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" href="/admin" className={` flex items-center mt-6`}> <span className='arrow'><HiArrowLeft/></span> BACK</Link>
                        {data.map((d)=>{
                           return(
                             <div key={d.id} style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} className=' flex rounded-lg justify-between p-5 '>
@@ -242,7 +245,7 @@ const editabout = () => {
                        })}
             </div>}
           
-            {/* show data here  */}
+        
    
 
         </div>
