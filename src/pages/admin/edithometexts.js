@@ -1,12 +1,19 @@
 import { addDoc, arrayUnion, collection, deleteDoc, deleteField, doc, getDocs, serverTimestamp, updateDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import { db, storage } from '../../../firebase.init';
+import { auth, db, storage } from '../../../firebase.init';
 import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import Loading from '@/components/SharedComp/Loading/Loading';
 import Link from 'next/link';
 import { HiArrowLeft} from 'react-icons/hi';
+import { v4 } from 'uuid';
+import { useRouter } from 'next/router';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import LoginPage from '@/Authentication/LoginPage';
 const edithometexts = () => {
-    
+
+  
+  const [user, loading, error] = useAuthState(auth);
+
     const [headTxt,setHeadTxt] = useState('');
     const [subTxt,setSubTxt] = useState('');
 
@@ -19,7 +26,7 @@ const edithometexts = () => {
 
 
     const [isUpdate, setIsUpdate] = useState(false);
-    const [loading,setLoading] = useState(true);
+    const [Ploading,setPLoading] = useState(true);
 
 
     //ADD DATA HERE 
@@ -54,7 +61,7 @@ const edithometexts = () => {
           });
           await Promise.all(
             images.map(async (img) => {
-              const imgRef = ref(storage, `homeimages/${img.name}`);
+              const imgRef = ref(storage, `homeimages/${img.name + v4()}`);
       
               try {
                 await uploadBytes(imgRef, img, 'data_url');
@@ -93,7 +100,7 @@ const edithometexts = () => {
     const getData = async() => {
         await getDocs(databaseRef)
         .then((response) =>{
-          setLoading(false)
+          setPLoading(false)
           setData(response.docs.map((data)=>{
             return {...data.data(), id: data.id}
           }))
@@ -151,7 +158,7 @@ const edithometexts = () => {
           // Add new images to the allImages field
           await Promise.all(
             images.map(async (img) => {
-              const imgRef = ref(storage, `homeimages/${img.name}`);
+              const imgRef = ref(storage, `homeimages/${img.name + v4()}`);
               await uploadBytes(imgRef, img, "data_url");
               const downloadURL = await getDownloadURL(imgRef);
               await updateDoc(fieldToEdit, {
@@ -172,6 +179,8 @@ const edithometexts = () => {
           Timestamp: serverTimestamp(),
         });
       }
+      getData();
+      setIsUpdate(false);
      }
 
 
@@ -196,74 +205,90 @@ const edithometexts = () => {
     };
 
     return (
-<div className='mainDiv'>
-    { loading ?  <div><Loading/></div> : <div>
-    <Link data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" href="/admin" className={` flex items-center mt-6`}> <span className='arrow'><HiArrowLeft/></span> BACK</Link>
-        <div className='HomeinputDiv flex justify-center'>
-          <form onSubmit={isUpdate? updateData: handleUpload}>
-              <h1 className='text-center font-bold pt-5 pb-5 text-2xl'>UPLOAD HOME TEXT & PHOTO</h1>
-              <label htmlFor="platfrom">Heading Text :</label> <br />
-              <input value={headTxt} className="input input-bordered input-primary w-full  mb-5" onChange={event => setHeadTxt(event.target.value)} type="text" id="" name="platform" required  /> <br />
-              <label htmlFor="desc">Sub Heading Text :</label> <br />
-              <input value={subTxt} className="textarea textarea-primary w-full  mb-5" onChange={event => setSubTxt(event.target.value)} type="text" name="desc"/>  <br />
-              
-              {/* carousel txt inputs  */}
-            <div className='grid grid-cols-2 gap-4'>
-                  <div>
-                  <label htmlFor="c1">Caraousel Text 1 :</label> <br />
-                  <input value={caraouselTxt1} className="textarea textarea-primary w-full max-w-xs mb-5" onChange={event => setCaraouselTxt1(event.target.value)} type="text" name="c1"/>  
+        <>
+          {user? 
+            <div className='mainDiv'>
+            { Ploading ?  <div><Loading/></div> : <div>
+            <Link data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" href="/admin" className={` flex items-center mt-6`}> <span className='arrow'><HiArrowLeft/></span> BACK</Link>
+                
+                  {isUpdate?  
+                  <div className='HomeinputDiv flex justify-center'>
+                  <form onSubmit={isUpdate? updateData: handleUpload}>
+                      <h1 className='text-center font-bold pt-5 pb-5 text-2xl'>UPLOAD HOME TEXT & PHOTO</h1>
+                      <label htmlFor="platfrom">Heading Text :</label> <br />
+                      <input value={headTxt} className="input input-bordered input-primary w-full  mb-5" onChange={event => setHeadTxt(event.target.value)} type="text" id="" name="platform" required  /> <br />
+                      <label htmlFor="desc">Sub Heading Text :</label> <br />
+                      <input value={subTxt} className="textarea textarea-primary w-full  mb-5" onChange={event => setSubTxt(event.target.value)} type="text" name="desc"/>  <br />
+                      
+                      {/* carousel txt inputs  */}
+                    <div className='grid grid-cols-2 gap-4'>
+                          <div>
+                          <label htmlFor="c1">Caraousel Text 1 :</label> <br />
+                          <input value={caraouselTxt1} className="textarea textarea-primary w-full max-w-xs mb-5" onChange={event => setCaraouselTxt1(event.target.value)} type="text" name="c1"/>  
+                          </div>
+                          <div>
+                          <label htmlFor="c2">Caraousel Text 2 :</label> <br />
+                          <input value={caraouselTxt2} className="textarea textarea-primary w-full max-w-xs mb-5" onChange={event => setCaraouselTxt2(event.target.value)} type="text" name="c2"/>  
+                          </div>
+                          <div>
+                          <label htmlFor="c3">Caraousel Text 3 :</label> <br />
+                          <input value={caraouselTxt3} className="textarea textarea-primary w-full max-w-xs mb-5" onChange={event => setCaraouselTxt3(event.target.value)} type="text" name="c3"/>  
+                          </div>
+                          <div>
+                          <label htmlFor="c4">Caraousel Text 4 :</label> <br />
+                          <input value={caraouselTxt4} className="textarea textarea-primary w-full max-w-xs mb-5" onChange={event => setCaraouselTxt4(event.target.value)} type="text" name="c4"/>  
+                          </div>
+                    </div>
+        
+        
+        
+        
+                      <input  multiple onChange={handleMultipleImages} className="file-input file-input-bordered w-full  mb-5"  type="file" accept='image/*'  name="" id="" /> <br />
+                       <div className='flex justify-between'>
+                       <input type='submit' value="UPDATE" className='btn btn-success w-4/12  '/> 
+                       <button onClick={()=> setIsUpdate(false)} className='btn btn-error'>Cancel</button>
+                       </div>
+                      
+                    
+                  </form>
                   </div>
-                  <div>
-                  <label htmlFor="c2">Caraousel Text 2 :</label> <br />
-                  <input value={caraouselTxt2} className="textarea textarea-primary w-full max-w-xs mb-5" onChange={event => setCaraouselTxt2(event.target.value)} type="text" name="c2"/>  
-                  </div>
-                  <div>
-                  <label htmlFor="c3">Caraousel Text 3 :</label> <br />
-                  <input value={caraouselTxt3} className="textarea textarea-primary w-full max-w-xs mb-5" onChange={event => setCaraouselTxt3(event.target.value)} type="text" name="c3"/>  
-                  </div>
-                  <div>
-                  <label htmlFor="c4">Caraousel Text 4 :</label> <br />
-                  <input value={caraouselTxt4} className="textarea textarea-primary w-full max-w-xs mb-5" onChange={event => setCaraouselTxt4(event.target.value)} type="text" name="c4"/>  
-                  </div>
-            </div>
-
-
-
-
-              <input  multiple onChange={handleMultipleImages} className="file-input file-input-bordered w-full  mb-5"  type="file" accept='image/*'  name="" id="" /> <br />
-              {isUpdate? <input type='submit' value="UPDATE"  className='btn w-full  '/> : 
-              <input type='submit' value="UPLOAD"  className='btn w-full  '/>
-              }
-          </form>
-        </div>
-
-       {/* show data here  */}
-    <div className='mt-20 dataShowDiv  grid grid-cols-3 gap-12'>
-                {data.map((d)=>{
-                    return (
-                        <div key={d.id} style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} className='w-full rounded-lg p-5 '>
-                            <div className=' pl-5 pr-5'>
-                                <h4 className='text-xl mt-8 font-bold'>Head Text : {d.headTxt}</h4>
-                                <h4 className='text-sm font-semibold mt-8'>Sub Text: {d.subTxt}</h4>
-                                <h5 className='text-sm font-semibold mt-8'>C1 : {d.ct1}</h5>
-                                <h5 className='text-sm font-semibold mt-8'>C2 : {d.ct2}</h5>
-                                <h5 className='text-sm font-semibold mt-8'>C3 : {d.ct3}</h5>
-                                <h5 className='text-sm font-semibold mt-8'>C4 : {d.ct4}</h5>
-                                <div className='flex mt-14'>
-                                <img style={{width: '200px', height:'200px'}} className='rounded-lg' src={d.allImages[0]} alt="" /> 
-                                <img className='ml-3 rounded-lg' style={{width: '200px', height:'200px'}} src={d.allImages[1]} alt="" /> 
+                  :
+                  
+                  <div className='mt-20 w-full  grid grid-cols-1 gap-12'>
+                        {data.map((d)=>{
+                            return (
+                                <div key={d.id} style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} className='w-full rounded-lg p-5 '>
+                                    <div className=' pl-5 pr-5 flex'>
+                                      <div className=' mt-14'>
+                                        <img  className='rounded-lg w-72 h-56 mb-5' src={d.allImages[0]} alt="" /> 
+                                        <img className=' rounded-lg w-72 h-56' src={d.allImages[1]} alt="" /> 
+                                      </div>
+        
+                                  <div className='ml-48'>
+                                            <h4 className='text-2xl mt-8 font-bold'><strong>Head Text</strong> : {d.headTxt}</h4>
+                                            <h4 className='text-lg font-semibold mt-8'><strong>Sub Text:</strong> {d.subTxt}</h4>
+                                            <h5 className='text-base font-semibold mt-8'>C1 : {d.ct1}</h5>
+                                            <h5 className='text-base font-semibold mt-8'>C2 : {d.ct2}</h5>
+                                            <h5 className='text-base font-semibold mt-8'>C3 : {d.ct3}</h5>
+                                            <h5 className='text-base font-semibold mt-8'>C4 : {d.ct4}</h5>
+                  
+                                            <button onClick={() =>getSingleData(d.id,d.headTxt,d.subTxt,d.allImages,d.ct1,d.ct2,d.ct3,d.ct4)} className='btn-sm btn-info btn  mt-5 ' >Edit</button>
+                                            {/* <button onClick={() => deleteData(d.id,d.allImages)} className='btn-sm btn btn-error ml-5 mt-5'>Delete</button> */}
+                                  </div>
+                                    </div>
                                 </div>
-                                <button onClick={() =>getSingleData(d.id,d.headTxt,d.subTxt,d.allImages,d.ct1,d.ct2,d.ct3,d.ct4)} className='btn-sm btn-info btn  mt-5 ' >Edit</button>
-                                <button onClick={() => deleteData(d.id,d.allImages)} className='btn-sm btn btn-error ml-5 mt-5'>Delete</button>
-                            </div>
-                        </div>
-                      )
-                })}
+                              )
+                        })}
+                    </div>}
+        
+               {/* show data here  */}
+                    
+        
             </div>
-
-    </div>
-    }
- </div>
+            }
+         </div>
+          : <LoginPage/>}
+        </>
     );
 };
 

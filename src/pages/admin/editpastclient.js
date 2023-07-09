@@ -1,10 +1,12 @@
 import { addDoc, collection, deleteDoc, doc, getDocs , serverTimestamp, updateDoc } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import { db, storage } from '../../../firebase.init';
+import { auth, db, storage } from '../../../firebase.init';
 import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { v4 } from 'uuid';
 import Link from 'next/link';
 import { HiArrowLeft} from 'react-icons/hi';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import LoginPage from '@/Authentication/LoginPage';
 
 const editpastclient = () => {
     const [isUpdate, setIsUpdate] = useState(false);
@@ -144,8 +146,11 @@ const editpastclient = () => {
         })
       }
 
+      const [user, Authloading, error] = useAuthState(auth);
+
     return (
-        <div className='mainDiv'>
+      <>
+        {user? <div className='mainDiv'>
             {loading ? <h1>LOADING</h1> : <div>
             <Link data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" href="/admin" className={` flex items-center mt-6`}> <span className='arrow'><HiArrowLeft/></span> BACK</Link>
 
@@ -176,7 +181,8 @@ const editpastclient = () => {
                 })}
             </div>
             </div> }
-        </div>
+        </div> : <LoginPage/>}
+        </>
     );
 };
 

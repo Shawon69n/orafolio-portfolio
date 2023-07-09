@@ -65,7 +65,7 @@ const Caraousel = () => {
                             <p className={styles.titleTxt1}>{D.pName}</p>
                     </div>
                 </div>
-                    <Link href='works/project1' className={styles.arrowBtn}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></Link>
+                    <Link href={`/works/${D.id}`} className={styles.arrowBtn}><h1 className={styles.arrow}><AiOutlineArrowRight/></h1></Link>
                     </div>
                     <img  src={D.allImages[0]} />
                 </div>

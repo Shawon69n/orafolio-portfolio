@@ -34,7 +34,7 @@ const WorkPage = () => {
          
          <div className='mt-16'>
 
-         <div className="grid-container">
+         <div className="grid md:grid-cols-2 gap-5">
             {data.map((d, index) => (
                 <WorkPageLayout key={d.id} d={d} index={index} />
             ))}

@@ -24,7 +24,7 @@ const AboutMe = () => {
   
   
     return (
-        <div className='lg:flex lg:justify-between mt-32 mb-32'>
+        <div className='lg:flex lg:justify-between mt-32 pl-10 pr-10 mb-32'>
             <div >
                 <h1 className='lg:text-xl text-center text-gray-400 tracking-widest'>ABOUT ME</h1>
                     <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className="avatar mt-10">

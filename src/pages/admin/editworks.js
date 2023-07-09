@@ -1,10 +1,12 @@
 import { addDoc, arrayUnion, collection, deleteDoc, deleteField, doc, getDocs, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import React, { useEffect, useState } from 'react';
-import { db, storage } from '../../../firebase.init';
+import { auth, db, storage } from '../../../firebase.init';
 import { v4 } from 'uuid';
 import Link from 'next/link';
 import { HiArrowLeft} from 'react-icons/hi';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import LoginPage from '@/Authentication/LoginPage';
 const editworks = () => {
     const [projectName,setProjectName] = useState('');
     const [year,setYear] = useState('');
@@ -15,7 +17,7 @@ const editworks = () => {
     const [images,setImages] = useState('');
     const [loading,setLoading] = useState(true)
 
-
+    const [user, Authloading, error] = useAuthState(auth);
 
 
  //GET DATA HERE
@@ -160,7 +162,17 @@ const editworks = () => {
                 allImages: arrayUnion(downloadURL),
               });
             })
-          );
+          )
+          .then(() => {
+            alert('Data added')
+            setProjectName('');
+            setDesc('');
+            setRole('');
+            setType('');
+            setYear('')
+            setIsUpdate(false);
+            getData()
+          })
           
       }
       else{    
@@ -171,7 +183,18 @@ const editworks = () => {
           role: role,
           type: type,
           Timestamp: serverTimestamp(),
-        });
+        })
+        .then(() => {
+          alert('Data added')
+          setProjectName('');
+          setDesc('');
+          setRole('');
+          setType('');
+          setYear('')
+          setIsUpdate(false);
+          getData()
+        })
+        
       }
      }
 
@@ -200,10 +223,11 @@ const editworks = () => {
 
     
     return (
-           <div>
+           <>
+           {user? <div className='workContainer'>
              <Link data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" href="/admin" className={` flex items-center mt-6`}> <span className='arrow'><HiArrowLeft/></span> BACK</Link>
-        <div className='HomeinputDiv flex justify-center'>
-          <form onSubmit={isUpdate? updateData : handleUpload}>
+        <div className='HomeinputDiv ml-[507px]  flex justify-center'>
+          <form  onSubmit={isUpdate? updateData : handleUpload}>
               <h1 className='text-center font-bold pt-5 pb-5 text-2xl'>UPLOAD PROJECT</h1>
               <label htmlFor="project name">Project Name</label> <br />
               <input value={projectName} className="input input-bordered input-primary w-full  mb-5" onChange={event => setProjectName(event.target.value)} type="text" id="" name="project name" required  /> <br />
@@ -224,7 +248,12 @@ const editworks = () => {
             </div>
 
              <input  multiple onChange={handleMultipleImages} className="file-input file-input-bordered w-full  mb-5"  type="file" accept='image/*'   name="" id="" /> <br />
-              {isUpdate? <input type='submit' value="UPDATE"  className='btn w-full  '/> : 
+              {isUpdate? 
+                <div className='flex justify-between'>
+                  <input type='submit' value="UPDATE"  className='btn w-4/12  '/>
+                  <button onClick={()=> setIsUpdate(false)} className='btn btn-error'>Cancel</button>
+                </div>
+              : 
               <input type='submit' value="UPLOAD"  className='btn w-full  '/>
               }
           </form>
@@ -254,7 +283,11 @@ const editworks = () => {
                       )
                 })}
             </div>
-        </div>
+           </div>
+           :
+           <LoginPage/>
+           }
+           </>
     );
 };
 

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { db, storage } from '../../../firebase.init';
+import { auth, db, storage } from '../../../firebase.init';
 import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { addDoc, collection, doc, getDocs, serverTimestamp, updateDoc } from 'firebase/firestore';
 import Link from 'next/link';
 import { HiArrowLeft} from 'react-icons/hi';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import LoginPage from '@/Authentication/LoginPage';
 const editabout = () => {
     const [headTxt,setHeadTxt] = useState('');
     const [subTxt,setSubTxt] = useState('');
@@ -16,6 +18,9 @@ const editabout = () => {
     const [isUpdate, setIsUpdate] = useState(false);
     const [loading,setLoading] = useState(true);
     const databaseRef = collection(db,'aboutpage');
+
+    const [user, Authloading, error] = useAuthState(auth);
+
 
           //GET DATA HERE
  const [data,setData] = useState([])
@@ -170,7 +175,8 @@ const editabout = () => {
 
 
     return (
-        <div className='AboutContainer'>
+        <>
+          {user? <div className='AboutContainer'>
           {isUpdate? <form onSubmit={isUpdate && updateData } className='aboutFormDiv' >
         <h1 className='text-center font-bold pt-5 pb-5 text-2xl'>UPLOAD HOME TEXT & PHOTO</h1>
         <div className='flex justify-between'>
@@ -249,6 +255,10 @@ const editabout = () => {
    
 
         </div>
+        : 
+        <LoginPage/>  
+      }
+        </>
     );
 };
 
