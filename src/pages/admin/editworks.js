@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { HiArrowLeft} from 'react-icons/hi';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import LoginPage from '@/Authentication/LoginPage';
+import AdminPageLayout from '@/AdminComponent/AdminPageLayout';
 const editworks = () => {
     const [projectName,setProjectName] = useState('');
     const [year,setYear] = useState('');
@@ -19,6 +20,21 @@ const editworks = () => {
 
     const [user, Authloading, error] = useAuthState(auth);
 
+
+
+    const [descErr,setDescErr] = useState(false);
+
+    const handleDescChange = () => {
+     
+     if (desc.length >= 578 && desc.length <= 650) {
+       setDescErr(false);
+     } else {
+       setDescErr(true);
+     }
+   };
+
+   const txt = 'BLACK built its ecosystem due to well-designed products while our rivals’ approach was to make theirs by acquiring similar services and stimulating their growth with enormous money investments. We looked for ways to boost our revenue streams, but rather than working on each service’s revenue separately, we were looking for an amplifying force for all of them at once. Eventually, the Fintech division became such a solution – consumers received various offerings that made their transactions in Yandex more beneficial while the services cut expenses on payment infrastructure.'
+   console.log(txt.length)
 
  //GET DATA HERE
  const [data,setData] = useState([])
@@ -66,6 +82,10 @@ const editworks = () => {
         return;
       }
     
+      if(descErr){
+        return;
+      }
+
       try {
         const databaseRef = await addDoc(collection(db, 'projects'), {
           pName: projectName,
@@ -223,7 +243,7 @@ const editworks = () => {
 
     
     return (
-           <>
+           <AdminPageLayout>
            {user? <div className='workContainer'>
              <Link data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" href="/admin" className={` flex items-center mt-6`}> <span className='arrow'><HiArrowLeft/></span> BACK</Link>
         <div className='HomeinputDiv ml-[507px]  flex justify-center'>
@@ -232,7 +252,8 @@ const editworks = () => {
               <label htmlFor="project name">Project Name</label> <br />
               <input value={projectName} className="input input-bordered input-primary w-full  mb-5" onChange={event => setProjectName(event.target.value)} type="text" id="" name="project name" required  /> <br />
               <label htmlFor="desc">Description :</label> <br />
-              <textarea value={desc} className="textarea textarea-primary w-full  mb-5" onChange={event => setDesc(event.target.value)} type="text" name="desc"/>  <br />
+              <textarea value={desc} className="textarea textarea-primary w-full  mb-5" onBlur={handleDescChange} onChange={event => setDesc(event.target.value)} type="text" name="desc"/>  <br />
+              {descErr? <h1 className='text-red-600 pb-2 text-sm'>Description length should be under 578-650 letters</h1> : ''}
               <label htmlFor="project type">Project Type</label> <br />
               <input value={type} className="input input-bordered input-primary w-full  mb-5" onChange={event => setType(event.target.value)} type="text" id="" name="platform" required  /> <br />
               {/* carousel txt inputs  */}
@@ -287,7 +308,7 @@ const editworks = () => {
            :
            <LoginPage/>
            }
-           </>
+           </AdminPageLayout>
     );
 };
 

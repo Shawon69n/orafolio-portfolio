@@ -52,10 +52,10 @@
 
 .aboutFormDiv{
     margin-top: 60px;
-    width: 1000px;
+    width: 1200px;
     height: 600px;
     padding: 20px;
-    margin-left: 300px;
+    margin-left: 200px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
@@ -92,12 +92,11 @@
 
 
   .gridContainer {
+    padding-top: 20px;
     margin: 0 auto;
-    width: 500px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+    display: flex;
     align-items: center;
+    justify-content: center;
     
   }
   
@@ -130,4 +129,12 @@
     width: 300px;
 
 
+  }
+
+
+  .linkBtns{
+    background: #131315;
+  }
+  .linkBtns:hover{
+    background: #0d0d0e;
   }

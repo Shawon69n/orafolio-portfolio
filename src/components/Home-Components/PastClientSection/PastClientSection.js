@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './PastClient.module.css'
-
+import { BiRightArrowAlt } from 'react-icons/bi';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../../../firebase.init';
+import Link from 'next/link';
 const PastClientSection = () => {
 
      //GETTING DATA HERE
@@ -32,16 +33,23 @@ const PastClientSection = () => {
         {data.map((D,index)=> 
         <div  key={D.id} className={`${styles.MainContainer}`}>
         <div className={`${styles.SubContainer} lg:flex lg:justify-between `}>
-            <h1 data-aos="zoom-in" data-aos-delay="100" data-aos-duration="2000"  className='font-medium text-xl  mr-20 text-gray-400'>{index+1}</h1>
-            <img className={styles.unHoverImg} src={D.url} alt="" />
-            <div data-aos="zoom-in" data-aos-delay="100" data-aos-duration="500" className={styles.TxtDiv}>
-            <h1 data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1500" className='text-gray-400 text-4xl font-semibold tracking-widest mt-5 mb-16'>{D.name}</h1>
-            <p data-aos="zoom-in" data-aos-delay="100" data-aos-duration="2000" className='text-xl mb-14'>{D.desc}</p>
+            <h1   className='font-medium text-xl  mr-20 text-gray-400'>{index+1}</h1>
+
+            <div className='flex justify-between'>
+              <div className={styles.hoverImgDiv}>
+                <img className={styles.hoverImg} src={D.url} alt="" />
+              </div>
+
+              <div className={styles.TxtDiv}>
+              <h1  className='text-gray-400 text-4xl font-semibold tracking-widest mt-5 mb-16'>{D.name}</h1>
+              <p className='text-xl mb-14'>{D.desc}</p>
+              </div>
             </div>
-            <img className={styles.hoverImg} src={D.url} alt="" />
+            
         </div>
     </div>
         )}
+
        </div>
     );
 };

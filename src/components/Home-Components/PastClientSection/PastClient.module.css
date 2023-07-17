@@ -1,11 +1,17 @@
-.hoverImg{
+.hoverImgDiv{
     width: 450px;
     height: 322px;
-    border-radius: 10px;
-    position: absolute;
-    left: 256px;
-    z-index: 1;
+   padding-top: 20px;
+   transition: all 0.5s ease;
+   
 }
+.hoverImgDiv img {
+
+    width: 85%;
+    height: 85%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
 
 .MainContainer{
     width: 1187px;
@@ -14,27 +20,33 @@
     border-bottom: 1px solid rgba(192, 192, 192, 0.637);
 }
 
-.SubContainer .hoverImg{
-    visibility: hidden;
-    position: absolute;
-    transition: all 0.5s ease;
-    transform: scale(0);
-}
 
 
-.SubContainer:hover .hoverImg{
-    visibility: visible;
-    transform: scale(1);
-    
-}
+
+
 
 .TxtDiv{
-   margin-left: 559px;
+   width: 50%;
 }
 
-.unHoverImg{
-    display: none;
+
+.seeBtn{
+    background: #8e8e8f;
+    margin-left: 700px;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    width: 112px;
+    border-radius: 24px;
+    padding: 5px;
+    color: white;
+    margin-top: 24px;
 }
+.seeBtn:hover{
+    background: #7b7b7c;
+   
+}
+
 
 @media (min-width: 1700px) and (max-width: 4000px) {
     .hoverImg{

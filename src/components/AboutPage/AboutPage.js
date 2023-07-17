@@ -7,6 +7,7 @@ import 'aos/dist/aos.css';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../../firebase.init';
 import Loading from '../SharedComp/Loading/Loading';
+import Link from 'next/link';
 const AboutPage = () => {
 
     useEffect(() =>{
@@ -51,16 +52,12 @@ const AboutPage = () => {
                 <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="3800" className={styles.Ptxt}>{data.headTxt}</p> 
                 <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={`${styles.Ptxt} mt-14`}>{data.subTxt}</h1> 
                 <div  className={`${styles.Ptxt2} mt-16 flex`}>
-                    <h1 className='mr-20'>Facebook</h1>
-                    <h1 className='mr-20'>Instagram</h1>
-                    <h1 className='mr-20'>Whatsapp</h1>
+                    <Link href={data.facebook} target="_blank" className='mr-20'>Facebook</Link>
+                    <Link href={data.instagram} target="_blank" className='mr-20'>Instagram</Link>
+                    <Link href={data.github} target="_blank" className='mr-20'>Github</Link>
+                    <Link href={data.linkedin} target="_blank" className='mr-20'>Linkedin</Link>
                 </div> 
-                <div  className={`${styles.Ptxt2} mt-8 flex`}>
-                    <h1 className='mr-20'>Google</h1>
-                    <h1 className='mr-20'>Four Seasons</h1>
-                    <h1 className='mr-20'>Wise</h1>
-                </div> 
-                
+                             
                 </div> 
            
                 </div>

@@ -7,6 +7,7 @@ import { addDoc, collection, doc, getDocs, serverTimestamp, updateDoc } from 'fi
 import Link from 'next/link';
 import { deleteObject, getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { v4 } from 'uuid';
+import AdminPageLayout from '@/AdminComponent/AdminPageLayout';
 
 const editclientcaraousel = () => {
    
@@ -150,7 +151,7 @@ const editclientcaraousel = () => {
 
 
     return (
-        <>
+        <AdminPageLayout>
         {user? <div className='mainDiv'>
             {loading ? <h1>LOADING</h1> : <div>
             <Link data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" href="/admin" className={` flex items-center mt-6`}> <span className='arrow'><HiArrowLeft/></span> BACK</Link>
@@ -186,7 +187,7 @@ const editclientcaraousel = () => {
             </div>
             </div> }
         </div> : <LoginPage/>}
-        </>
+        </AdminPageLayout>
     );
 };
 

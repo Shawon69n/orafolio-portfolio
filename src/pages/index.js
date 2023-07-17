@@ -17,6 +17,7 @@ import NavFootLayout from '@/components/SharedComp/NavFootLayout/NavFootLayout'
 import { db } from '../../firebase.init'
 import { collection, getDocs } from 'firebase/firestore'
 import Loading from '@/components/SharedComp/Loading/Loading'
+import HomeClient from '@/components/Home-Components/PastClientSection/HomeClientSection/HomeClient'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -63,7 +64,7 @@ export default function Home() {
             <Hero data={data} />
             <AboutMe />
             <CaraouselSection/>
-            <PastClientSection/>
+            <HomeClient/>
             <PastClientCaraousel/> 
           </>}
          

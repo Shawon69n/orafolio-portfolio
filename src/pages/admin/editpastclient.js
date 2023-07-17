@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { HiArrowLeft} from 'react-icons/hi';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import LoginPage from '@/Authentication/LoginPage';
+import AdminPageLayout from '@/AdminComponent/AdminPageLayout';
 
 const editpastclient = () => {
     const [isUpdate, setIsUpdate] = useState(false);
@@ -15,33 +16,57 @@ const editpastclient = () => {
     const [imgUrl,setImgUrl] = useState('');
     const databaseRef = collection(db,'pastclient');
    const [loading,setLoading] = useState(true);
+
+
+   const [descErr,setDescErr] = useState(false);
+
+   const handleDescChange = () => {
+    
+    if (desc.length >= 186 && desc.length <= 250) {
+      setDescErr(false);
+    } else {
+      setDescErr(true);
+    }
+  };
+
     // UPLOADING HERE 
     const handleUpload = async(e) =>{
-        e.preventDefault()
+      e.preventDefault()
+      if (desc.length >= 186 && desc.length <= 250) {
+        setDesc(desc);
         if(imgUrl){
-            const imageRef = ref(storage, `pastclientimages/${imgUrl.name + v4()}`);
-            await uploadBytes(imageRef, imgUrl).then(() =>{
-              getDownloadURL(imageRef).then((url) =>{  
-                addDoc(databaseRef,{
-                  platform,
-                  desc,
-                  url,
-                  Timestamp : serverTimestamp()
-                })
-                .then(() => {
-                  alert('Data added')
-                  setPlatform('')
-                  setDesc('')
-                  setImgUrl('')
-                  getData()
-                })
-                .catch((err) =>{
-                  console.error
-                }) 
+          const imageRef = ref(storage, `pastclientimages/${imgUrl.name + v4()}`);
+          await uploadBytes(imageRef, imgUrl).then(() =>{
+            getDownloadURL(imageRef).then((url) =>{  
+              addDoc(databaseRef,{
+                platform,
+                desc,
+                url,
+                Timestamp : serverTimestamp()
               })
+              .then(() => {
+                alert('Data added')
+                setPlatform('')
+                setDesc('')
+                setImgUrl('')
+                getData()
+              })
+              .catch((err) =>{
+                console.error
+              }) 
             })
+          })
+    
+        }
+      } else{
+        alert('minimum letters is 186 and max is 250')
+      }
       
-          }
+    
+
+      
+        
+       
     }
 
     
@@ -149,19 +174,20 @@ const editpastclient = () => {
       const [user, Authloading, error] = useAuthState(auth);
 
     return (
-      <>
+      <AdminPageLayout>
         {user? <div className='mainDiv'>
             {loading ? <h1>LOADING</h1> : <div>
             <Link data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" href="/admin" className={` flex items-center mt-6`}> <span className='arrow'><HiArrowLeft/></span> BACK</Link>
 
-            <div className='inputDiv flex justify-center'>
+            <div className='inputDiv flex justify-center rounded'>
                 <form onSubmit={isUpdate? updateData: handleUpload}>
                     <h1 className='text-center font-bold pt-5 pb-5 text-2xl'>UPLOAD CLIENT</h1>
                     <label htmlFor="platfrom">Platform :</label> <br />
                     <input value={platform} className="input input-bordered input-primary w-full max-w-xs mb-5" onChange={event => setPlatform(event.target.value)} type="text" id="" name="platform" required  /> <br />
                     <label htmlFor="desc">Description :</label> <br />
-                    <textarea value={desc} className="textarea textarea-primary w-full max-w-xs mb-5" onChange={event => setDesc(event.target.value)} type="text" name="desc"/>  <br />
-                    <input className="file-input file-input-bordered w-full max-w-xs mb-5"  onChange={(e) => { setImgUrl(e.target.files[0]) }} type="file" accept='image/*' name="" id="" /> <br />
+                    <textarea  value={desc} className="textarea textarea-primary w-full max-w-xs mb-5" onBlur={handleDescChange} onChange={event => setDesc(event.target.value)} type="text" name="desc"/>  <br />
+                    {descErr? <h1 className='text-red-600 pb-2 text-sm'>Description length should be under 155-166 letters</h1> : ''}
+                    <input className="file-input file-input-bordered w-full max-w-xs mb-5"   onChange={(e) => { setImgUrl(e.target.files[0]) }} type="file" accept='image/*' name="" id="" /> <br />
                     {isUpdate? <button className='btn w-full max-w-xs ' >Update</button> : <input type='submit' value="UPLOAD"  className='btn w-full max-w-xs '/>}
                 </form>
           </div>
@@ -182,7 +208,7 @@ const editpastclient = () => {
             </div>
             </div> }
         </div> : <LoginPage/>}
-        </>
+        </AdminPageLayout>
     );
 };
 

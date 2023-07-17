@@ -9,6 +9,7 @@ import { v4 } from 'uuid';
 import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import LoginPage from '@/Authentication/LoginPage';
+import AdminPageLayout from '@/AdminComponent/AdminPageLayout';
 const edithometexts = () => {
 
   
@@ -27,6 +28,28 @@ const edithometexts = () => {
 
     const [isUpdate, setIsUpdate] = useState(false);
     const [Ploading,setPLoading] = useState(true);
+
+    // errors 
+    const [headtxtErr,setHeadTxtErr] = useState(false);
+    const [subTxtErr,setSubTxtErr] = useState(false);
+
+    const handleHeadTxtChange = () => {
+    
+      if (headTxt.length >= 25 && headTxt.length <= 36) {
+        setHeadTxtErr(false)
+      } else {
+        setHeadTxtErr(true)
+      }
+    };
+
+    const handleSubtxtChange = () => {
+    
+      if (subTxt.length >= 125 && subTxt.length <= 165) {
+        setSubTxtErr(false)
+      } else {
+        setSubTxtErr(true)
+      }
+    };
 
 
     //ADD DATA HERE 
@@ -205,7 +228,7 @@ const edithometexts = () => {
     };
 
     return (
-        <>
+        <AdminPageLayout>
           {user? 
             <div className='mainDiv'>
             { Ploading ?  <div><Loading/></div> : <div>
@@ -216,10 +239,11 @@ const edithometexts = () => {
                   <form onSubmit={isUpdate? updateData: handleUpload}>
                       <h1 className='text-center font-bold pt-5 pb-5 text-2xl'>UPLOAD HOME TEXT & PHOTO</h1>
                       <label htmlFor="platfrom">Heading Text :</label> <br />
-                      <input value={headTxt} className="input input-bordered input-primary w-full  mb-5" onChange={event => setHeadTxt(event.target.value)} type="text" id="" name="platform" required  /> <br />
+                      <input value={headTxt} className="input input-bordered input-primary w-full  mb-5" onBlur={handleHeadTxtChange} onChange={event => setHeadTxt(event.target.value)} type="text" id="" name="platform" required  /> <br />
+                      {headtxtErr? <h1 className='text-red-600 pb-5 text-sm'>Head text length should be under 25-36 letters</h1> : ''}
                       <label htmlFor="desc">Sub Heading Text :</label> <br />
-                      <input value={subTxt} className="textarea textarea-primary w-full  mb-5" onChange={event => setSubTxt(event.target.value)} type="text" name="desc"/>  <br />
-                      
+                      <input value={subTxt}  className="textarea textarea-primary w-full  mb-5" onBlur={handleSubtxtChange} onChange={event => setSubTxt(event.target.value)} type="text" name="desc"/>  <br />
+                      {subTxtErr? <h1 className='text-red-600 pb-5 text-sm'>Head text length should be under 155-166 letters</h1> : ''}
                       {/* carousel txt inputs  */}
                     <div className='grid grid-cols-2 gap-4'>
                           <div>
@@ -288,7 +312,7 @@ const edithometexts = () => {
             }
          </div>
           : <LoginPage/>}
-        </>
+        </AdminPageLayout>
     );
 };
 
