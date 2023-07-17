@@ -134,6 +134,7 @@
 
   .linkBtns{
     background: #131315;
+    width: 200px;
   }
   .linkBtns:hover{
     background: #0d0d0e;

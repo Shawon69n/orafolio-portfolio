@@ -46,13 +46,17 @@
 
 import React, { useState } from 'react'
 import styles from "./expnavbar.module.css";
-import { AiOutlineClose ,AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineClose ,AiOutlineMenu,AiOutlineLogout } from 'react-icons/ai';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase.init';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
 export const ExpNavbar = () => {
     const router = useRouter();
     const [open,setOpen] =  useState(false)
-
+    const [user, Authloading, error] = useAuthState(auth);
   return (
     
         <nav className={styles.nav}>
@@ -78,6 +82,16 @@ export const ExpNavbar = () => {
                         <Link className='ml-16' href="/contact">
                         <p className={router.pathname === '/contact' ? styles.active : ''}>Contact</p>
                         </Link>
+
+                        {user?  <Link className='ml-16 ' href="/admin" onClick={() => signOut(auth)}>
+                        <p className='flex items-center '><span className='ml-2 text-xl text-red-600'><AiOutlineLogout/></span></p>
+                        </Link> : ''}
+
+
+                        {/* <Link className='text-red-500 flex  items-center  ' href="/admin" onClick={() => signOut(auth)}>
+                                   Logout <span className='ml-2'><AiOutlineLogout/></span> 
+                         </Link> */}
+
                     </div>
                 </ul>
 

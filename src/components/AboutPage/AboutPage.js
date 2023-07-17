@@ -43,7 +43,7 @@ const AboutPage = () => {
                 <div  data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className='lg:flex lg:justify-between mb-24 '>
                 <div >
                     <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className="avatar ">
-                    <div className="lg:w-96 w-11/12 lg:ml-0 ml-14 rounded-full">
+                    <div className="lg:w-96 w-11/12 lg:ml-0 ml-16  rounded-full">
                         <img src={data.url} />
                     </div>
                     </div>
@@ -51,11 +51,11 @@ const AboutPage = () => {
                 <div>
                 <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="3800" className={styles.Ptxt}>{data.headTxt}</p> 
                 <h1 data-aos="fade-up" data-aos-delay="100" data-aos-duration="2800" className={`${styles.Ptxt} mt-14`}>{data.subTxt}</h1> 
-                <div  className={`${styles.Ptxt2} mt-16 flex`}>
-                    <Link href={data.facebook} target="_blank" className='mr-20'>Facebook</Link>
-                    <Link href={data.instagram} target="_blank" className='mr-20'>Instagram</Link>
-                    <Link href={data.github} target="_blank" className='mr-20'>Github</Link>
-                    <Link href={data.linkedin} target="_blank" className='mr-20'>Linkedin</Link>
+                <div  className={`${styles.Ptxt2} mt-16 flex `}>
+                    <Link href={data.facebook} target="_blank" className='md:mr-20 mr-10'>Facebook</Link>
+                    <Link href={data.instagram} target="_blank" className='md:mr-20 mr-10'>Instagram</Link>
+                    <Link href={data.github} target="_blank" className='md:mr-20 mr-10'>Github</Link>
+                    <Link href={data.linkedin} target="_blank" className='md:mr-20 mr-10'>Linkedin</Link>
                 </div> 
                              
                 </div> 

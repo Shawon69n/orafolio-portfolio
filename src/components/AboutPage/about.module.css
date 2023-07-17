@@ -73,6 +73,7 @@
         font-size: 37px;
         font-weight: 600;
         color: black;
+        padding: 30px;
     }
     
     .Ptxt2{
@@ -80,11 +81,12 @@
         font-size: 25px;
         font-weight: 700;
         color: black;
+        padding: 30px;
     }
 
     .expSection{
         width: 640px;
-       
+       padding: 30px;
        display: block;
        margin-bottom: 500px;
     }
